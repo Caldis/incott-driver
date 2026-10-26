@@ -1,0 +1,50 @@
+{
+  "verified_on": "2026-10-27 Asia/Hong_Kong",
+  "commit": "ecd67855de1287813e6b28b9d85c0811e65170a5",
+  "actions": "https://github.com/Caldis/incott-driver/actions/runs/40369810119",
+  "url": "https://caldis.github.io/incott-driver/",
+  "console_errors": 0,
+  "external_resources": 0,
+  "assets": [
+    {
+      "path": "index.html",
+      "sha256": "7af15a4822aa85a230b447ceaef01c70f262b2f96a5c10b53e7cc926f219fc35",
+      "matches_local": true
+    },
+    {
+      "path": "studio.css",
+      "sha256": "701ac3da51634a2789c6ac4f655f89668569ab310488f11381633e092f45708b",
+      "matches_local": true
+    },
+    {
+      "path": "studio.js",
+      "sha256": "85248993ff0ff40481d6cf7b3439ccacdd3ad0c6722cdf35ef99499bea6dd06b",
+      "matches_local": true
+    },
+    {
+      "path": "core/adapter.js",
+      "sha256": "d2aa1a6d05f3de4a6ab298f55bfb332b81df604f0f62727f7b8ac57510e60b6f",
+      "matches_local": true
+    },
+    {
+      "path": "core/incott-original.js",
+      "sha256": "71a9cecc5d5c7833fc9afe71e6ed3f1948ac07918cb0e6bde5b8538fbf2f26cf",
+      "matches_local": true
+    },
+    {
+      "path": "js/define-v100.js",
+      "sha256": "411836457b069b5453d6a44b26b672704541c38b6aed04ce6b3b8ae44edc1f54",
+      "matches_local": true
+    },
+    {
+      "path": "images/mouseG24.png",
+      "sha256": "bf572cf69f1b0fd23e331b5ba5e76ddddc525825f21a04f6a57f1c046da50425",
+      "matches_local": true
+    },
+    {
+      "path": "original.html",
+      "sha256": "6c9047572f2a31ddc8bb66386b67470415162382233e2d9e037e10c64c6a83e5",
+      "matches_local": true
+    }
+  ]
+}
