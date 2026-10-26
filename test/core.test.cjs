@@ -66,6 +66,13 @@ test("original hardware class is extracted verbatim", () => {
     original.trim(),
   );
 });
+test("cancelled device cannot send later parameter writes", async () => {
+  const { run } = context();
+  assert.equal(
+    await run(`(async()=>{const device=new IncottHardware();let writes=0;device.handle={sendFeatureReport:async()=>{writes++;}};device.cancelled=true;const result=await device.setUsbRate(500);return result===false&&writes===0;})()`),
+    true,
+  );
+});
 test("six physical buttons retain original matrix and encodings", () => {
   const { run } = context();
   assert.equal(

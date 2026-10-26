@@ -55,6 +55,10 @@ function _nci91wo0vpg0() {
 }
 
 class IncottHardware extends CBAccess {
+  async sendData(data) {
+    if (this.cancelled) return false;
+    return super.sendData(data);
+  }
   // Vendor method references an undefined `lod` instead of its argument.
   async setSensorMode(mode) {
     if (!Number.isInteger(mode) || mode < 0 || mode > 2) return false;
@@ -90,7 +94,11 @@ class IncottController extends EventTarget {
         operation(),
         new Promise((_, reject) => {
           timer = setTimeout(() => {
-            this.fault = true;
+                this.fault = true;
+                if (this.device) {
+                  this.device.cancelled = true;
+                  this.device.handle?.close().catch(() => {});
+                }
             reject(new Error("设备通信超时，请重新插拔鼠标后连接。"));
           }, 25000);
         }),
