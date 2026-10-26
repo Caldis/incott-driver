@@ -6,6 +6,8 @@ This license applies only to the newly authored studio interface, adapter,
 server, tests, and project tooling. It does not apply to archived Incott code,
 js/define-v100.js, core/incott-original.js, original images, or other vendor
 files, whose rights remain with their respective authors.
+The Noto Sans SC font subset is distributed separately under OFL-1.1;
+see site/fonts/OFL.txt and site/fonts/source.json.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of the covered software and associated documentation files (the "Software"),

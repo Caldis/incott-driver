@@ -5,6 +5,26 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const root = path.join(__dirname, "..", "site");
+test("UI font is a bundled, intact WOFF2 asset", () => {
+  const font = fs.readFileSync(path.join(root, "fonts/incott-ui-v1.woff2"));
+  const source = JSON.parse(
+    fs.readFileSync(path.join(root, "fonts/source.json"), "utf8"),
+  );
+  assert.equal(font.toString("ascii", 0, 4), "wOF2");
+  assert.equal(
+    crypto.createHash("sha256").update(font).digest("hex"),
+    source.sha256,
+  );
+  assert.ok(font.length < 200_000);
+  for (const name of ["studio.html", "studio.js", "core/adapter.js"]) {
+    const text = fs.readFileSync(path.join(root, name), "utf8");
+    for (const character of text.match(/[\u3400-\u9fff]/gu) || [])
+      assert.ok(
+        source.characters.includes(character),
+        `${name}: missing ${character}; run tools/update-ui-font.py`,
+      );
+  }
+});
 function context() {
   const sandbox = {
     console,
@@ -69,7 +89,26 @@ test("original hardware class is extracted verbatim", () => {
 test("cancelled device cannot send later parameter writes", async () => {
   const { run } = context();
   assert.equal(
-    await run(`(async()=>{const device=new IncottHardware();let writes=0;device.handle={sendFeatureReport:async()=>{writes++;}};device.cancelled=true;const result=await device.setUsbRate(500);return result===false&&writes===0;})()`),
+    await run(
+      `(async()=>{const device=new IncottHardware();let writes=0;device.handle={sendFeatureReport:async()=>{writes++;}};device.cancelled=true;const result=await device.setUsbRate(500);return result===false&&writes===0;})()`,
+    ),
+    true,
+  );
+});
+test("unknown model is rejected and its handle is closed before other reads", async () => {
+  const { run } = context();
+  assert.equal(
+    await run(`(async()=>{
+      let count=0;
+      const device={vendorId:0x093a,productId:0x622c,opened:false,
+        open:async()=>{device.opened=true;},close:async()=>{device.opened=false;},
+        sendFeatureReport:async()=>{count++;},
+        receiveFeatureReport:async()=>new DataView(new Uint8Array([9,0x8f,1,9,0,0xf1,0,0,0]).buffer)};
+      navigator.hid.getDevices=async()=>[device];
+      const controller=new IncottController();
+      try{await controller.connect(true);return false;}
+      catch{return !device.opened&&controller.device===null&&count===1&&controller.snapshot===null;}
+    })()`),
     true,
   );
 });

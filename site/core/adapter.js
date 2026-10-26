@@ -94,11 +94,11 @@ class IncottController extends EventTarget {
         operation(),
         new Promise((_, reject) => {
           timer = setTimeout(() => {
-                this.fault = true;
-                if (this.device) {
-                  this.device.cancelled = true;
-                  this.device.handle?.close().catch(() => {});
-                }
+            this.fault = true;
+            if (this.device) {
+              this.device.cancelled = true;
+              this.device.handle?.close().catch(() => {});
+            }
             reject(new Error("设备通信超时，请重新插拔鼠标后连接。"));
           }, 25000);
         }),
@@ -160,8 +160,11 @@ class IncottController extends EventTarget {
         ace.curpid = found.productId;
         ace.iswireless = found.productId === 0x522c;
         found.oninputreport = _5o2woknpwy1q;
-        if (!(await ace.readPSD()) || !ace.devname)
-          throw new Error("设备型号读取失败，请重新插拔后重试。");
+        if (!(await ace.readPSD()) || !["G23", "G24"].includes(ace.devname)) {
+          await found.close().catch(() => {});
+          this.device = null;
+          throw new Error("设备型号未在当前支持范围内，请查看兼容性列表。");
+        }
         ace.online = true;
         await ace.readInfo();
         ace.curOnBoard = await ace.readProfileIndex();

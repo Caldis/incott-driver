@@ -2,7 +2,7 @@ async (page) => {
   const baseline = await page.evaluate(() => incott.snapshot.debounce);
   if (baseline !== 8)
     throw new Error("Expected the previously captured 8 ms baseline.");
-  const target = page.getByRole("button", { name: "性能设置", exact: true });
+  const target = page.getByRole("tab", { name: "性能设置", exact: true });
   await target.click();
   let wrote = false,
     restored = false;
@@ -36,7 +36,7 @@ async (page) => {
     date: new Date().toISOString(),
   };
   await page.evaluate((value) => (window.realUiReport = value), report);
-  await page.getByRole("button", { name: "按键定义", exact: true }).click();
+  await page.getByRole("tab", { name: "按键定义", exact: true }).click();
   await page.evaluate(() => {
     window.scrollTo(0, 0);
     document.activeElement?.blur();

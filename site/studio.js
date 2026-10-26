@@ -144,8 +144,10 @@
     const connected = !!controller.snapshot && !controller.fault,
       busy = controller.busy;
     $("connect").disabled = busy;
+    $("connect").setAttribute("aria-busy", String(busy));
+    $("apply").setAttribute("aria-busy", String(busy));
     $("connect").innerHTML = connected
-      ? "已连接 <span>●</span>"
+      ? '已连接 <span class="connection-dot" aria-hidden="true"></span>'
       : "连接鼠标 <span>↗</span>";
     $("refresh").disabled = !connected || busy || dirty.size > 0;
     $("apply").disabled = !connected || busy || !dirty.size || recording;
@@ -202,13 +204,14 @@
         ? bindingName(draft.keyCodes[Number(el.dataset.binding)])
         : "未读取";
     });
-    document
-      .querySelectorAll("[data-button]")
-      .forEach((el) =>
-        el.classList.toggle("selected", Number(el.dataset.button) === selected),
-      );
+    document.querySelectorAll("[data-button]").forEach((el) => {
+      const active = Number(el.dataset.button) === selected;
+      el.classList.toggle("selected", active);
+      el.setAttribute("aria-pressed", String(active));
+    });
     $("selected-summary").textContent =
       String(selected + 1).padStart(2, "0") + " · " + names[selected];
+    scheduleCalloutLines();
   }
   function acceptSnapshot(snapshot) {
     draft = clone(snapshot);
@@ -249,7 +252,9 @@
       const active = el.dataset.tab === tab;
       el.classList.toggle("active", active);
       el.setAttribute("aria-selected", String(active));
+      el.tabIndex = active ? 0 : -1;
     });
+    $("editor-body").setAttribute("aria-labelledby", "tab-" + tab);
     if (tab === "keys") renderKeys();
     else if (tab === "dpi") renderDpi();
     else if (tab === "performance") renderPerformance();
@@ -1132,6 +1137,69 @@
   window.addEventListener("pagehide", () => {
     stopRecording();
     controller.device?.handle?.close().catch(() => {});
+  });
+  let lineFrame = 0;
+  function scheduleCalloutLines() {
+    cancelAnimationFrame(lineFrame);
+    lineFrame = requestAnimationFrame(() => {
+      const canvas = document.querySelector(".mouse-canvas");
+      const svg = document.querySelector(".callout-lines");
+      const bounds = canvas.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      svg.setAttribute("viewBox", `0 0 ${bounds.width} ${bounds.height}`);
+      const nodes = [];
+      for (let index = 0; index < 6; index++) {
+        const label = canvas
+          .querySelector(`.callout[data-button="${index}"]`)
+          .getBoundingClientRect();
+        const target = canvas
+          .querySelector(`.hotspot[data-button="${index}"]`)
+          .getBoundingClientRect();
+        const left = [0, 3, 4].includes(index);
+        const x = (left ? label.right : label.left) - bounds.left;
+        const y = label.top + label.height / 2 - bounds.top;
+        const tx = target.left + target.width / 2 - bounds.left;
+        const ty = target.top + target.height / 2 - bounds.top;
+        const turn = x + (tx - x) * 0.6;
+        const path = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path",
+        );
+        path.setAttribute("d", `M ${x} ${y} H ${turn} L ${tx} ${ty}`);
+        path.setAttribute("stroke", index === selected ? "#8a9a64" : "#b6bda8");
+        path.dataset.buttonLine = String(index);
+        nodes.push(path);
+        const dot = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "circle",
+        );
+        dot.setAttribute("cx", tx);
+        dot.setAttribute("cy", ty);
+        dot.setAttribute("r", index === selected ? 3 : 2);
+        dot.setAttribute("fill", index === selected ? "#8a9a64" : "#b6bda8");
+        nodes.push(dot);
+      }
+      svg.replaceChildren(...nodes);
+    });
+  }
+  const stageObserver = new ResizeObserver(scheduleCalloutLines);
+  stageObserver.observe(document.querySelector(".mouse-canvas"));
+  $("mouse-photo").addEventListener("load", scheduleCalloutLines);
+  document.fonts.ready.then(scheduleCalloutLines);
+  document.querySelector(".tabs").addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    const buttons = [...document.querySelectorAll("[data-tab]")];
+    const current = buttons.findIndex((button) => button.dataset.tab === tab);
+    const index =
+      event.key === "Home"
+        ? 0
+        : event.key === "End"
+          ? buttons.length - 1
+          : (current + (event.key === "ArrowRight" ? 1 : -1) + buttons.length) %
+            buttons.length;
+    event.preventDefault();
+    buttons[index].click();
+    buttons[index].focus();
   });
   window.IncottStudio = {
     getDraft: () => clone(draft),

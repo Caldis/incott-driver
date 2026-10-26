@@ -1,4 +1,5 @@
 async (page) => {
+  const localOrigin = new URL(page.url()).origin;
   const failures = [],
     checks = [];
   const check = (name, pass) => {
@@ -106,7 +107,7 @@ async (page) => {
       },
     });
   });
-  await page.goto("http://127.0.0.1:8765/studio.html");
+  await page.goto(localOrigin + "/studio.html");
   await page
     .getByRole("status")
     .filter({ hasText: "当前配置已读取" })
@@ -123,7 +124,46 @@ async (page) => {
         "grid",
     ),
   );
-  await page.getByRole("button", { name: "DPI 灵敏度", exact: true }).click();
+  await page.evaluate(() => document.fonts.ready);
+  check(
+    "bundled variable font loaded",
+    await page.evaluate(() =>
+      document.fonts.check('550 14px "Incott UI"', "按键定义"),
+    ),
+  );
+  check(
+    "UI text is at least 13px",
+    await page.evaluate(() =>
+      [
+        ".binding",
+        ".tabs button",
+        ".category-nav button",
+        ".save-state",
+        ".palette-heading span",
+      ].every(
+        (selector) =>
+          parseFloat(
+            getComputedStyle(document.querySelector(selector)).fontSize,
+          ) >= 13,
+      ),
+    ),
+  );
+  check(
+    "six leaders follow actual key targets",
+    (await page.locator("[data-button-line]").count()) === 6,
+  );
+  const keysTab = page.getByRole("tab", { name: "按键定义", exact: true });
+  await keysTab.focus();
+  await page.keyboard.press("ArrowRight");
+  check(
+    "tabs support arrow-key navigation",
+    (await page
+      .getByRole("tab", { name: "DPI 灵敏度", exact: true })
+      .getAttribute("aria-selected")) === "true",
+  );
+  await page.keyboard.press("Home");
+
+  await page.getByRole("tab", { name: "DPI 灵敏度", exact: true }).click();
   await page
     .getByRole("spinbutton", { name: "档位 6 DPI", exact: true })
     .fill("6500");
@@ -151,7 +191,7 @@ async (page) => {
     "write preserves mouse canvas geometry",
     JSON.stringify(before) === JSON.stringify(after),
   );
-  await page.getByRole("button", { name: "性能设置", exact: true }).click();
+  await page.getByRole("tab", { name: "性能设置", exact: true }).click();
   check(
     "wired UI caps rate at 1000 Hz",
     await page
@@ -171,7 +211,7 @@ async (page) => {
     "discard restores original read value",
     (await page.locator("#setting-debounce").inputValue()) === "8",
   );
-  await page.getByRole("button", { name: "按键定义", exact: true }).click();
+  await page.getByRole("tab", { name: "按键定义", exact: true }).click();
   await page.getByRole("button", { name: "互换左右键", exact: true }).click();
   check(
     "swap updates only pending bindings",
@@ -190,7 +230,7 @@ async (page) => {
     "key search filters palette",
     (await page.locator("[data-binding-choice]").count()) === 1,
   );
-  await page.getByRole("button", { name: "宏", exact: true }).click();
+  await page.getByRole("tab", { name: "宏", exact: true }).click();
   await page.getByRole("button", { name: "● 录制按键", exact: true }).click();
   await page.keyboard.press("KeyA");
   await page.keyboard.press("Escape");
@@ -217,7 +257,7 @@ async (page) => {
       .getByRole("button", { name: "测试预设", exact: true })
       .count()) === 1,
   );
-  await page.getByRole("button", { name: "按键定义", exact: true }).click();
+  await page.getByRole("tab", { name: "按键定义", exact: true }).click();
   for (const width of [1440, 820, 390]) {
     await page.setViewportSize({ width, height: 1000 });
     check(
@@ -227,10 +267,17 @@ async (page) => {
       ),
     );
   }
-  await page.screenshot({ path: "evidence/studio-mobile.png", fullPage: true });
+  await page.evaluate(() => {
+    window.scrollTo(0, 0);
+    document.activeElement?.blur();
+  });
+  await page.screenshot({
+    path: "output/playwright/polish-mobile.png",
+    fullPage: true,
+  });
   await page.setViewportSize({ width: 1440, height: 1100 });
   await page.screenshot({
-    path: "evidence/studio-ui-test.png",
+    path: "output/playwright/polish-desktop.png",
     fullPage: true,
   });
   check(

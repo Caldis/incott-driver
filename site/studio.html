@@ -8,12 +8,19 @@
       content="Incott G23 / G24 本地鼠标设置，支持按键、DPI、性能与宏。"
     />
     <title>Incott · 鼠标工作台</title>
+    <link
+      rel="preload"
+      href="fonts/incott-ui-v1.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="icon" href="studio-icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="studio.css" />
+    <link rel="stylesheet" href="studio.css?v=20261027.2" />
     <script defer src="js/define-v100.js"></script>
     <script defer src="core/incott-original.js"></script>
     <script defer src="core/adapter.js"></script>
-    <script defer src="studio.js"></script>
+    <script defer src="studio.js?v=20261027.2"></script>
   </head>
   <body>
     <a class="skip" href="#workspace">跳到设置</a>
@@ -167,18 +174,59 @@
           <div class="preset-note">
             <span>随鼠标保存</span>
             <p>写入后可以关闭网页。预设可导出备份，换一台电脑继续使用。</p>
+            <a
+              class="compatibility-link"
+              href="https://github.com/Caldis/incott-driver/blob/main/COMPATIBILITY.md"
+              target="_blank"
+              rel="noopener"
+              >支持型号与测试范围 ↗</a
+            >
           </div>
         </aside>
       </div>
       <section class="editor" aria-label="设置编辑区">
-        <nav class="tabs" aria-label="设置分类">
-          <button data-tab="keys" class="active" aria-selected="true">
+        <nav class="tabs" aria-label="设置分类" role="tablist">
+          <button
+            data-tab="keys"
+            role="tab"
+            id="tab-keys"
+            aria-controls="editor-body"
+            class="active"
+            aria-selected="true"
+          >
             按键定义</button
-          ><button data-tab="dpi" aria-selected="false">DPI 灵敏度</button
-          ><button data-tab="performance" aria-selected="false">性能设置</button
-          ><button data-tab="macros" aria-selected="false">宏</button>
+          ><button
+            data-tab="dpi"
+            role="tab"
+            id="tab-dpi"
+            aria-controls="editor-body"
+            aria-selected="false"
+          >
+            DPI 灵敏度</button
+          ><button
+            data-tab="performance"
+            role="tab"
+            id="tab-performance"
+            aria-controls="editor-body"
+            aria-selected="false"
+          >
+            性能设置</button
+          ><button
+            data-tab="macros"
+            role="tab"
+            id="tab-macros"
+            aria-controls="editor-body"
+            aria-selected="false"
+          >
+            宏
+          </button>
         </nav>
-        <div class="editor-body" id="editor-body"></div>
+        <div
+          class="editor-body"
+          id="editor-body"
+          role="tabpanel"
+          aria-labelledby="tab-keys"
+        ></div>
       </section>
     </main>
     <footer class="savebar">
