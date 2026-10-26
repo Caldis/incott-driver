@@ -24,7 +24,7 @@ jobs:
           node-version: '24'
           package-manager-cache: false
       - name: Test protocol adapter
-        run: node --test test/core.test.cjs
+        run: node --test test/*.test.cjs
       - name: Check JavaScript
         run: |
           node --check site/core/adapter.js

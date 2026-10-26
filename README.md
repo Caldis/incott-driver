@@ -32,6 +32,10 @@
 
 原版“4 个板载配置”实为电脑上的预设，新界面使用“本地预设”命名。原版配对按钮没有实现；没有固件升级文件，不提供这些空入口。完整命令、原版缺陷、被实验推翻的假设见 [PROTOCOL.md](PROTOCOL.md)。
 
+## 反馈与维护
+
+页面右上角有 [问题反馈入口](https://github.com/Caldis/incott-driver/issues/new/choose)，可填写问题或改进建议。处理规则见 [ISSUE_POLICY.md](ISSUE_POLICY.md)：Caldis 提交的问题直接处理，第三方问题需 Caldis 加 `codex:implement` 后才处理。
+
 ## 开发与验证
 
 ```sh

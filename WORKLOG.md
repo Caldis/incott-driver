@@ -68,3 +68,14 @@
 - 增加未知型号拒绝后关闭句柄的检查，避免未知设备首次失败后重连产生错误的已连接状态；没有新增命令，没有扩大写入范围。
 
 - 此轮验证：13 项 Node 测试通过，20 项隔离模拟 HID 的浏览器检查通过；1440/820/390 px 无横向溢出，DPR 1 与 DPR 2 均确认自带字体加载。前后截图保存 evidence/typography-before.png、typography-after.png。没有向用户鼠标写入数据。
+
+
+## Issue 反馈与每小时自动检查（2026-10-27）
+
+- 用户明确授权：页面加入 GitHub Issues 入口；每小时检查，Caldis 本人创建的 Issue 直接实施、测试和发版；第三方需 Caldis 加标签后实施。用户进一步选择只认 codex:implement，其他都等待，不设置 codex:plan。
+- 已创建仓库标签 codex:implement。ISSUE_POLICY.md 和 tools/issue-queue.cjs 固化授权边界，读取标签事件的 actor.login，不能只检查标签名。授权后第三方改正文或标题需要重新授权；代码增加相应测试。
+- 页面加入问题反馈入口与 GitHub 问题/建议表单，不附带任何设备序列号或个人信息；不会自动发 Issue、评论或关闭问题。
+- 使用应用的 heartbeat 自动化工具创建每小时任务，automationId=incott-issues，状态 ACTIVE，附在本聊天。工作目录明确为 D:\Code\incott-driver，状态保存在忽略提交的 .local/issue-monitor-state.json，安静处理未变化或未授权事项，仅在完成发布、失败或需要决策时通知。
+- 手动执行只读队列检查时没有开放 Issue，因此没有当前待实施任务。
+
+- 本次验收：24 项自动测试和 23 项隔离浏览器检查通过，反馈入口在 320 px 窄屏仍可见、不会横向溢出。GitHub GraphQL 已确认 Issue.lastEditedAt/editor 字段可用；本地调度文件已核对为 heartbeat、ACTIVE、每 1 小时。没有创建测试 Issue，也没有向任何 Issue 发评论。

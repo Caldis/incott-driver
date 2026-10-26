@@ -116,6 +116,17 @@ async (page) => {
     "initial reads do not write",
     await page.evaluate(() => mockHardware.writes === 0),
   );
+  const feedback = page.getByRole("link", {
+    name: "问题反馈（GitHub Issues）",
+    exact: true,
+  });
+  check(
+    "feedback links to GitHub issue chooser",
+    (await feedback.getAttribute("href")) ===
+      "https://github.com/Caldis/incott-driver/issues/new/choose" &&
+      (await feedback.getAttribute("target")) === "_blank",
+  );
+
   check(
     "stylesheet applied",
     await page.evaluate(
@@ -258,7 +269,7 @@ async (page) => {
       .count()) === 1,
   );
   await page.getByRole("tab", { name: "按键定义", exact: true }).click();
-  for (const width of [1440, 820, 390]) {
+  for (const width of [1440, 820, 390, 320]) {
     await page.setViewportSize({ width, height: 1000 });
     check(
       "no horizontal overflow at " + width,
@@ -267,6 +278,14 @@ async (page) => {
       ),
     );
   }
+  check(
+    "feedback entry stays visible on narrow screens",
+    (await feedback.isVisible()) &&
+      (await feedback
+        .boundingBox()
+        .then((box) => box.x >= 0 && box.x + box.width <= 320)),
+  );
+  await page.setViewportSize({ width: 390, height: 1000 });
   await page.evaluate(() => {
     window.scrollTo(0, 0);
     document.activeElement?.blur();

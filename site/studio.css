@@ -1652,3 +1652,47 @@ button.text-button {
     min-height: 44px;
   }
 }
+
+.feedback-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: var(--ink);
+}
+.feedback-link svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.feedback-link:hover {
+  color: #54643c;
+}
+@media (max-width: 700px) {
+  .feedback-link {
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+  }
+  .feedback-label {
+    display: none;
+  }
+  .top-actions {
+    gap: 8px;
+  }
+  .topbar {
+    gap: 10px;
+  }
+  #connect {
+    min-width: 112px;
+  }
+}
+@media (max-width: 380px) {
+  .top-actions #original-link {
+    display: none;
+  }
+}

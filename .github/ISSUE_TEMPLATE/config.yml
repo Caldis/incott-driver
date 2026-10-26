@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 支持型号与验证范围
+    url: https://github.com/Caldis/incott-driver/blob/main/COMPATIBILITY.md
+    about: 提交型号兼容问题前，可以先查看当前覆盖范围。
