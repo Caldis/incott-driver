@@ -1,0 +1,681 @@
+[
+  {
+    "path": "README.md",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/README.md",
+    "size": 273,
+    "sha256": "f87099525015ab0f46503e87c28b96bf2054f811f092c61e5d34ed037b459c4a",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/1k.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/1k.png",
+    "size": 805,
+    "sha256": "890b1762906d1ccb279ad170bc4c4d108a5e22539d7ff34dccc84368c76e24ba",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/24g.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/24g.png",
+    "size": 3238,
+    "sha256": "ce10589c53f5af3d31074b9664f5a618db05d3e2b884ece5055b51a697c6113c",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/8k.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/8k.png",
+    "size": 3316,
+    "sha256": "1d3199826e3d28e1820cb2153376e2d6f66164fdc9f12f1e47553d145a37d26f",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/arow.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/arow.png",
+    "size": 249,
+    "sha256": "55d71f49716663b147aa63fa9dfa34bd24f010e39ef33da2f0616daa08ce48b0",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/back.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/back.png",
+    "size": 425,
+    "sha256": "0346e51ebcae96d92e4ad9a90d92cbf21fc23bae2afd1a547572a1cf1b4921ac",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/buy_douyin.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/buy_douyin.png",
+    "size": 23015,
+    "sha256": "a0e642af56f750fab7b185c2052bebfcdbb25a9eab04874385c2a09bf09bb7d2",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/buy_jd.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/buy_jd.png",
+    "size": 18867,
+    "sha256": "64f552c032ffed7428087d7bddf197b188ec46839ba94839f6e3105bed6e9e15",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/buy_taobao.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/buy_taobao.png",
+    "size": 17227,
+    "sha256": "edea6bd731247deb6d70616136888ad4bb38d4436aca50ca0a4ceb514b83924a",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/buy_tmall.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/buy_tmall.png",
+    "size": 15150,
+    "sha256": "1e6ec6aad5b6d8bd638080bcd2f75f36364d32ab05cfecf5a70c7c36532272a5",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/icon_douyin.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/icon_douyin.png",
+    "size": 7706,
+    "sha256": "823e1570bb6bbb0594d691dca6cf2d574a1d68c2295eee33cb4b9f91d6e0d1e4",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/icon_jd.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/icon_jd.png",
+    "size": 14968,
+    "sha256": "7488511eddeace4f8056c4933d607d0822fb02b6a551082abcfe6168d4eb9abb",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/icon_taobao.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/icon_taobao.png",
+    "size": 23419,
+    "sha256": "3c90da715c859dd06b97aa5db3ea2c91c8dc6adb526ac35bb76ecbc56b970e67",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/buy/icon_tmall.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/buy/icon_tmall.png",
+    "size": 10888,
+    "sha256": "daad259e163ee076dcbecc283a56146d626b88950257d783f97c128835357213",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/check_off.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/check_off.png",
+    "size": 887,
+    "sha256": "cfcc632070adf47688abd23c9f352f55c10c1689ff22ada7fd6c7dfc523e3db5",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/G24/0.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/G24/0.png",
+    "size": 120274,
+    "sha256": "a9e08afcee1260e0cf7c66084434c75b40678b2e05b0f81325c3f8c18078f63f",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/G24/1.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/G24/1.png",
+    "size": 119907,
+    "sha256": "c99011cfcb6fce0fc0fcf6be5c1a98fbdb70542dec5830fd9f56d56390cd240d",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/G24/2.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/G24/2.png",
+    "size": 118769,
+    "sha256": "ace512ad2b2fe9d26a90d7e10b42761bb601d25584dabb59b5ea163e06914952",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/G24/3.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/G24/3.png",
+    "size": 120795,
+    "sha256": "e7ab9d4e03ee8bebc06115c5b835f057eb3d25e26640ef3a735329bc7804265d",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/G24/4.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/G24/4.png",
+    "size": 116764,
+    "sha256": "38d800789810f85cb86c08944b04eecc8ede4105960c15145e9c12dccaef0cbe",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/G24/5.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/G24/5.png",
+    "size": 119531,
+    "sha256": "c087da8d35f46d71dd8e97370996c336be116fd67c77ba2cea8cbb8cea9e2fda",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/G24/6.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/G24/6.png",
+    "size": 120447,
+    "sha256": "179014747ee75a2d8aad5bae96a93a39fbaa20445f109f741ad40690b0d8f963",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/add_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/add_dn.png",
+    "size": 738,
+    "sha256": "d31ecfbf34816cedfe4a37775e2aafa3e53c31d156073fec10e8c8a20b4e3a52",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/add_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/add_nr.png",
+    "size": 979,
+    "sha256": "9ce998cae85066f453bc61623edca728d4bff688c18eb5c2518e15f91a2b4671",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/buy.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/buy.png",
+    "size": 1772,
+    "sha256": "42f84c4155172c01ae74f9c304ee3507a9f484d8d0631223b30353c9f99c54c2",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/config.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/config.png",
+    "size": 1949,
+    "sha256": "7706a4f00c4884b2f417c7f482ba1ad2b0193d42fe45826b0bf98ad8407beab7",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/import.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/import.png",
+    "size": 517,
+    "sha256": "500b25e40bd6988266c97d98376d9beedd7e5dd91cac939060dac5a1916dfd3a",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/macico_kb.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/macico_kb.png",
+    "size": 615,
+    "sha256": "ff1844967013acef3820bc80dd4ee721f61cf62dc9e2a9fe14a78effc9555507",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/modify.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/modify.png",
+    "size": 428,
+    "sha256": "33df22b76d8e243ddbfb3d8abcba12b21e75485afe4a80634141e29931aa8902",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/msfundpi_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/msfundpi_dn.png",
+    "size": 765,
+    "sha256": "7ba5054d047a658e81fe90c4f28da949d003e1ef2ba4549191a043abf602fb90",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/msfundpi_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/msfundpi_nr.png",
+    "size": 779,
+    "sha256": "27498e7d65296aadfc46cec1c9ce74b56bc5e989530bcdae990788e02543af05",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/msfunkey_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/msfunkey_dn.png",
+    "size": 428,
+    "sha256": "2c874b5c38dd3855a84dbb10460eda6d432fd0dd118d1ae3eabd2ce35aed82c5",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/msfunkey_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/msfunkey_nr.png",
+    "size": 420,
+    "sha256": "439a53a9d0b8e99453e68cf07b3b05407cf04dd13cda0cf21c753f1f2c997f7c",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/msfunsys_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/msfunsys_dn.png",
+    "size": 508,
+    "sha256": "f5feff90fd46f5388afe1fe09ec7cff48b462a9eaef22e2d412a3d48dd34e547",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/msfunsys_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/msfunsys_nr.png",
+    "size": 517,
+    "sha256": "2260fd1d85253a83794760284a22bc978f72e284a7306f0381955ae63642b0b1",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/new.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/new.png",
+    "size": 560,
+    "sha256": "87650c0d3583d2460453cf9761194014d41be4979895921e094026d08747b1ae",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/sam.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/sam.png",
+    "size": 26190,
+    "sha256": "6d464588e4155fd64bbad8d046849644a32526488718e6edc1c1c0b000c2ef50",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/sub_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/sub_dn.png",
+    "size": 668,
+    "sha256": "93a1781247043260845b56c80a4ee164ddd2b58b5c71ddca89f6aeb129fa95cb",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dark/sub_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dark/sub_nr.png",
+    "size": 925,
+    "sha256": "e59938a2aa6ce40f2d8831a2506c93de02fd0c2aa9ee1ae7496dd56142dd011f",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dpi_add.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dpi_add.png",
+    "size": 534,
+    "sha256": "ab4fd9786445a34452784c98bdf749f7bec2b859994d9adaa27508c7b6ffdea4",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dpi_sub.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dpi_sub.png",
+    "size": 506,
+    "sha256": "d0b9697c31c8d673ff3f2ac6551898c51afd507986e7614ce3708c33d078773f",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/dropdown.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/dropdown.png",
+    "size": 2999,
+    "sha256": "9da938f4c188fba0f587726ece3a4fc69c9d04c248854d3a8ba9764ceb94a7b1",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/G24/0.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/G24/0.png",
+    "size": 120274,
+    "sha256": "a9e08afcee1260e0cf7c66084434c75b40678b2e05b0f81325c3f8c18078f63f",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/G24/1.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/G24/1.png",
+    "size": 121252,
+    "sha256": "e87cba8601d16fde88f1604bf1dcae76dc40b9a27bc2eb76853154c249038b99",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/G24/2.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/G24/2.png",
+    "size": 119976,
+    "sha256": "19fdb58bcc74a2f20e149d44f73ec0f721fb38bd0c0d01a67a708338e4d935d3",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/G24/3.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/G24/3.png",
+    "size": 118380,
+    "sha256": "557a53002047717caf900391328932284b046087bd2c8c8d144c2712387b332d",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/G24/4.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/G24/4.png",
+    "size": 120059,
+    "sha256": "bb09fa3b93677d7ad998152d742d1b900f7b79f931786e9ec29924b977673fe9",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/G24/5.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/G24/5.png",
+    "size": 120539,
+    "sha256": "2f94a53296769b86ce098ce49cc9a3e1c2feeba0a88559c93da215df11532938",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/G24/6.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/G24/6.png",
+    "size": 116920,
+    "sha256": "503ca9b841c803e38241310c03a67ec412e9b2bdb60436e49be5fc7d8ff48f6d",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/add_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/add_nr.png",
+    "size": 975,
+    "sha256": "98ac31580e813550e61bd5da1d87be7bd9e36ca6a673a191f0d70f61631e75e3",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/buy.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/buy.png",
+    "size": 1704,
+    "sha256": "889792468f6c1d43185f0cac819359053bcd6085ec455fb1d786b33061ddd1f1",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/config.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/config.png",
+    "size": 1976,
+    "sha256": "234637c9ba6ddc19d1c93965089226a8676d3c5c4580bdd7ab890c6631c68581",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/import.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/import.png",
+    "size": 3227,
+    "sha256": "848206f98328aa0d874ecca1da9d85e6b565e64e760a9463083a293e929a9e95",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/modify.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/modify.png",
+    "size": 428,
+    "sha256": "33df22b76d8e243ddbfb3d8abcba12b21e75485afe4a80634141e29931aa8902",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/msfundpi_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/msfundpi_dn.png",
+    "size": 768,
+    "sha256": "71f904f6b71d97c031525ccc7510f5698e7bdee159d1d9b92cd65fed889ea36f",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/msfundpi_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/msfundpi_nr.png",
+    "size": 779,
+    "sha256": "27498e7d65296aadfc46cec1c9ce74b56bc5e989530bcdae990788e02543af05",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/msfunkey_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/msfunkey_dn.png",
+    "size": 431,
+    "sha256": "7a49fe27124833b0fb1967a83850581019b57f5df0ebf4c74ae819b200320409",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/msfunkey_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/msfunkey_nr.png",
+    "size": 420,
+    "sha256": "439a53a9d0b8e99453e68cf07b3b05407cf04dd13cda0cf21c753f1f2c997f7c",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/msfunsys_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/msfunsys_dn.png",
+    "size": 508,
+    "sha256": "970ce2869ffcac92d7e77de5d997777f891a8c0ae23ac71a9fcce1069aa891bc",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/msfunsys_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/msfunsys_nr.png",
+    "size": 517,
+    "sha256": "2260fd1d85253a83794760284a22bc978f72e284a7306f0381955ae63642b0b1",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/new.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/new.png",
+    "size": 560,
+    "sha256": "87650c0d3583d2460453cf9761194014d41be4979895921e094026d08747b1ae",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/sam.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/sam.png",
+    "size": 26779,
+    "sha256": "db9e0a08e6b1bb9d5d6aede29649d0ceba8ff81b897f4a41a7285602b0c823ce",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/sub_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/sub_dn.png",
+    "size": 669,
+    "sha256": "a519913e21dd16b9114863187a19dc0ad8e5ddc66dcc3867e072186b85e0c6e0",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/light/sub_nr.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/light/sub_nr.png",
+    "size": 926,
+    "sha256": "91869db35f3866c7734b15415e07acbd3e6ecdb89f72afcc04643dcda1a71840",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/logo.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/logo.png",
+    "size": 3412,
+    "sha256": "69994742dc5ba916d01f5e954bc7daebd2970dd2b7a3c5da65711ed3f8469ba1",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/mouseG23.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/mouseG23.png",
+    "size": 286897,
+    "sha256": "9f6244aa3cab66e0ecae60d3d6ed366741904d314378e8cc950f339fc5c3583c",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/mouseG24.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/mouseG24.png",
+    "size": 231142,
+    "sha256": "bf572cf69f1b0fd23e331b5ba5e76ddddc525825f21a04f6a57f1c046da50425",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/0.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/0.png",
+    "size": 540,
+    "sha256": "e8789cc3b5eaedcbb8934ff958aa1d5a59959154154abfdf89a73d3780e161ea",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/10.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/10.png",
+    "size": 598,
+    "sha256": "85924782e8fbc44ecc6393ef110f46a83e55913db0fca8bf62f6128eb823765d",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/100.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/100.png",
+    "size": 613,
+    "sha256": "d6283f2932987e28fb12d2176372907b4c7ae29f6bd3402b27e6ea97d4939f81",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/20.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/20.png",
+    "size": 633,
+    "sha256": "d5c06460aabee160cb82777a78bb5ba78716cf9ad4624bc33cb513a4ffa018e9",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/30.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/30.png",
+    "size": 632,
+    "sha256": "9669233e7af1f126852cafc63c16d5be9407dd0db7a8228ece543f78bd74e7ac",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/40.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/40.png",
+    "size": 641,
+    "sha256": "7ba1e745147a11eed6a1bac501b056f4ebd9482808f943e2d34c4c33084d231a",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/50.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/50.png",
+    "size": 656,
+    "sha256": "331091e4a77a4e2b98242255c377b51cb51b183fe53b9a1528325e0ef3ed8b8b",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/60.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/60.png",
+    "size": 695,
+    "sha256": "1ac6924a34218e9eca35cc21da39a6534bb5d8e12cc2c646c91af8a95890e2ce",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/70.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/70.png",
+    "size": 650,
+    "sha256": "8c8841229755ac16896c539cd3dacb9097ef3ec672fb9c8f0b15990fbd18897e",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/80.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/80.png",
+    "size": 654,
+    "sha256": "1236ba16da19ea6062f34b94e1ae778bbb139631ec508833bcbd7ffac5038ef0",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/power/90.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/power/90.png",
+    "size": 611,
+    "sha256": "2c67ebbe55be2fce181b2edac6bd215ca93b7c83fdbddb7aacf740c5286cabb3",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/sub_dn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/sub_dn.png",
+    "size": 668,
+    "sha256": "93a1781247043260845b56c80a4ee164ddd2b58b5c71ddca89f6aeb129fa95cb",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/sw_off.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/sw_off.png",
+    "size": 4744,
+    "sha256": "4c8bb3d62ba44c3ffed6848cb0886f5d6a7a768bf343afb3723479384f329431",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/sw_on.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/sw_on.png",
+    "size": 1666,
+    "sha256": "9ec63dd396a46c99a16cecbe4768e7530f3b6b30eb06825aa5eed93d407e964a",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/usb.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/usb.png",
+    "size": 844,
+    "sha256": "83871ae2340fba6f440775448c3d2865420d422e18c83d1071f4eecd7ad8670a",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/warn.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/warn.png",
+    "size": 718,
+    "sha256": "de963cb38919e73fde177a8e6bb1343ab3fbe7bf4447138569e10d0f7311b3e1",
+    "status": "downloaded"
+  },
+  {
+    "path": "images/warnning.png",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/images/warnning.png",
+    "size": 2526,
+    "sha256": "b5fcc77510cd569ae16484cfe7108e6f868e93cc7a59bc101e36d9eafc43e1e1",
+    "status": "downloaded"
+  },
+  {
+    "path": "index.html",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/index.html",
+    "size": 77499,
+    "sha256": "6c9047572f2a31ddc8bb66386b67470415162382233e2d9e037e10c64c6a83e5",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/chunk-v1003.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/chunk-v1003.js",
+    "size": 103923,
+    "sha256": "beaabf2673e6f467cf9bd1ed56efef3e317a88f41f418befe672db989d2e21f4",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/define-v100.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/define-v100.js",
+    "size": 5864,
+    "sha256": "411836457b069b5453d6a44b26b672704541c38b6aed04ce6b3b8ae44edc1f54",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/dlg-v101.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/dlg-v101.js",
+    "size": 11882,
+    "sha256": "acb5c9000b0ec9009a484adea1414042e39155c215472882084de1bd44a135f6",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/gvarG23-v100.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/gvarG23-v100.js",
+    "size": 1886,
+    "sha256": "bb38588cefdf66f0393323dfa80f7e8308708acf455ec0c384df78cf32d4c9cb",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/lib/jquery-3.7.1.min.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/lib/jquery-3.7.1.min.js",
+    "size": 87533,
+    "sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/lib/savepro.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/lib/savepro.js",
+    "size": 5775,
+    "sha256": "8d14f0ff0290dd567e7e145d520e2203136b0c75a7a10de65e8ea4aa1c970f00",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/mdev-v101.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/mdev-v101.js",
+    "size": 27832,
+    "sha256": "8e3157d8a5bfa38f11750f0024f7616df46a18d970f516dfb376fa048b0cb0f2",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/profileG23-v100.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/profileG23-v100.js",
+    "size": 35,
+    "sha256": "6ec31a3e206dab1c81d076a405e7cd1d65e7a4b17d89afeed93f4b00c4d58988",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/public-v101.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/public-v101.js",
+    "size": 31012,
+    "sha256": "46fc5e2ec6bf53bcdaf9b1691703e74fa5758275b0cfa6113708dd151d05091f",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/text_en-v101.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/text_en-v101.js",
+    "size": 8288,
+    "sha256": "2109f3201ce7829102deafd78f240ea78201704979b840df0540c48d22ee5453",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/text_sc-v101.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/text_sc-v101.js",
+    "size": 10671,
+    "sha256": "fb51caa1739e042a552d356dbac9cef86e31fb4dd8aed0ee20bf640a3fde80d0",
+    "status": "downloaded"
+  },
+  {
+    "path": "js/xsed-v100.js",
+    "url": "https://www.azuridayo.ca/incott-g23-g24-driver/js/xsed-v100.js",
+    "size": 10194,
+    "sha256": "2a71faa43774fda6af4a97e0232f4bf9c3ed88d64dfa3d48daa632286bae59c3",
+    "status": "downloaded"
+  }
+]

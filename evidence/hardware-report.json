@@ -1,0 +1,434 @@
+{
+  "date": "2026-10-26T17:17:35.294Z",
+  "model": "G24",
+  "tests": [
+    {
+      "name": "rate 125",
+      "expected": 125,
+      "actual": 125,
+      "pass": true
+    },
+    {
+      "name": "rate 250",
+      "expected": 250,
+      "actual": 250,
+      "pass": true
+    },
+    {
+      "name": "rate 500",
+      "expected": 500,
+      "actual": 500,
+      "pass": true
+    },
+    {
+      "name": "rate 1000",
+      "expected": 1000,
+      "actual": 1000,
+      "pass": true
+    },
+    {
+      "name": "rate 2000",
+      "expected": 2000,
+      "actual": 1000,
+      "pass": false
+    },
+    {
+      "name": "rate 4000",
+      "expected": 4000,
+      "actual": 1000,
+      "pass": false
+    },
+    {
+      "name": "rate 8000",
+      "expected": 8000,
+      "actual": 1000,
+      "pass": false
+    },
+    {
+      "name": "lod 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "lod 1",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "lod 2",
+      "expected": 2,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "name": "ripple 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "ripple 1",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "fixline 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "fixline 1",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "motion 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "motion 1",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "sensorMode 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "sensorMode 1",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "sensorMode 2",
+      "expected": 2,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "name": "debounce 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "debounce 8",
+      "expected": 8,
+      "actual": 8,
+      "pass": true
+    },
+    {
+      "name": "debounce 30",
+      "expected": 30,
+      "actual": 30,
+      "pass": true
+    },
+    {
+      "name": "inactive DPI 50",
+      "expected": 50,
+      "actual": 50,
+      "pass": true
+    },
+    {
+      "name": "inactive DPI 1600",
+      "expected": 1600,
+      "actual": 1600,
+      "pass": true
+    },
+    {
+      "name": "inactive DPI 32000",
+      "expected": 32000,
+      "actual": 32000,
+      "pass": true
+    },
+    {
+      "name": "fire loops 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "fire loops 1",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "fire loops 2",
+      "expected": 2,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "name": "fire loops 3",
+      "expected": 3,
+      "actual": 3,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 1",
+      "expected": 15728641,
+      "actual": 15728641,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 2",
+      "expected": 15794177,
+      "actual": 15794177,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 3",
+      "expected": 15859713,
+      "actual": 15859713,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 4",
+      "expected": 15990785,
+      "actual": 15990785,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 5",
+      "expected": 15925249,
+      "actual": 15925249,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 12",
+      "expected": 196615,
+      "actual": 196615,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 13",
+      "expected": 65543,
+      "actual": 65543,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 14",
+      "expected": 131079,
+      "actual": 131079,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 15",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 17",
+      "expected": 35188746,
+      "actual": 35188746,
+      "pass": true
+    },
+    {
+      "name": "mouse binding 18",
+      "expected": 61706,
+      "actual": 61706,
+      "pass": true
+    },
+    {
+      "name": "key binding {\"major\":2,\"minor\":4,\"modifer\":0}",
+      "expected": 1152,
+      "actual": 1152,
+      "pass": true
+    },
+    {
+      "name": "key binding {\"major\":2,\"minor\":4,\"modifer\":1}",
+      "expected": 262400,
+      "actual": 262400,
+      "pass": true
+    },
+    {
+      "name": "key binding {\"major\":3,\"minor\":2}",
+      "expected": 13434883,
+      "actual": 13434883,
+      "pass": true
+    },
+    {
+      "name": "key binding {\"major\":3,\"minor\":8}",
+      "expected": 14811139,
+      "actual": 14811139,
+      "pass": true
+    },
+    {
+      "name": "active DPI 0",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "active DPI 2",
+      "expected": 2,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "name": "active DPI 5",
+      "expected": 5,
+      "actual": 5,
+      "pass": true
+    },
+    {
+      "name": "restore keyCodes",
+      "expected": [
+        15728641,
+        15794177,
+        15859713,
+        15990785,
+        15925249,
+        196615
+      ],
+      "actual": [
+        15728641,
+        15794177,
+        15859713,
+        15990785,
+        15925249,
+        196615
+      ],
+      "pass": true
+    },
+    {
+      "name": "restore dpi",
+      "expected": [
+        400,
+        800,
+        1600,
+        2400,
+        3200,
+        6400
+      ],
+      "actual": [
+        400,
+        800,
+        1600,
+        2400,
+        3200,
+        6400
+      ],
+      "pass": true
+    },
+    {
+      "name": "restore activeDpi",
+      "expected": 2,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "name": "restore dpiCount",
+      "expected": 6,
+      "actual": 6,
+      "pass": true
+    },
+    {
+      "name": "restore rate",
+      "expected": 500,
+      "actual": 500,
+      "pass": true
+    },
+    {
+      "name": "restore debounce",
+      "expected": 8,
+      "actual": 8,
+      "pass": true
+    },
+    {
+      "name": "restore settings",
+      "expected": {
+        "lod": 1,
+        "ripple": 0,
+        "fixline": 0,
+        "motion": 1,
+        "sensorMode": 1
+      },
+      "actual": {
+        "lod": 1,
+        "ripple": 0,
+        "fixline": 0,
+        "motion": 1,
+        "sensorMode": 1
+      },
+      "pass": true
+    }
+  ],
+  "restored": true,
+  "restoreErrors": [],
+  "after": {
+    "format": "incott-studio",
+    "version": 1,
+    "model": "G24",
+    "sensor": 14672,
+    "wireless": false,
+    "is8KReceiver": false,
+    "power": 100,
+    "charging": 2,
+    "activeDpi": 2,
+    "dpiCount": 6,
+    "dpi": [
+      400,
+      800,
+      1600,
+      2400,
+      3200,
+      6400
+    ],
+    "keyCodes": [
+      15728641,
+      15794177,
+      15859713,
+      15990785,
+      15925249,
+      196615
+    ],
+    "rate": 500,
+    "debounce": 8,
+    "sleep": null,
+    "settings": {
+      "lod": 1,
+      "ripple": 0,
+      "fixline": 0,
+      "motion": 1,
+      "sensorMode": 1
+    },
+    "macros": {},
+    "fireLoops": 3,
+    "fireInterval": 10
+  },
+  "passed": 51,
+  "failed": [
+    {
+      "name": "rate 2000",
+      "expected": 2000,
+      "actual": 1000,
+      "pass": false
+    },
+    {
+      "name": "rate 4000",
+      "expected": 4000,
+      "actual": 1000,
+      "pass": false
+    },
+    {
+      "name": "rate 8000",
+      "expected": 8000,
+      "actual": 1000,
+      "pass": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+* text=auto eol=lf
+site/js/** -text
+site/images/** -text
+site/original.html -text
+site/README.md -text
+site/core/incott-original.js -text
+archives/** -text

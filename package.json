@@ -1,0 +1,8 @@
+{
+  "name": "incott-driver",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An offline-first Incott G23/G24 mouse workbench preserving the original WebHID protocol.",
+  "scripts": {"start": "node server.cjs", "test": "node --test test/core.test.cjs"},
+  "engines": {"node": ">=22"}
+}

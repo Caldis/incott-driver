@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "name": "initial reads do not write",
+      "pass": true
+    },
+    {
+      "name": "stylesheet applied",
+      "pass": true
+    },
+    {
+      "name": "editing only creates draft",
+      "pass": true
+    },
+    {
+      "name": "DPI write reaches transport and clears draft",
+      "pass": true
+    },
+    {
+      "name": "write preserves mouse canvas geometry",
+      "pass": true
+    },
+    {
+      "name": "wired UI caps rate at 1000 Hz",
+      "pass": true
+    },
+    {
+      "name": "discard restores original read value",
+      "pass": true
+    },
+    {
+      "name": "swap updates only pending bindings",
+      "pass": true
+    },
+    {
+      "name": "key search filters palette",
+      "pass": true
+    },
+    {
+      "name": "macro captures down and up",
+      "pass": true
+    },
+    {
+      "name": "macro saved locally",
+      "pass": true
+    },
+    {
+      "name": "preset saved locally",
+      "pass": true
+    },
+    {
+      "name": "no horizontal overflow at 1440",
+      "pass": true
+    },
+    {
+      "name": "no horizontal overflow at 820",
+      "pass": true
+    },
+    {
+      "name": "no horizontal overflow at 390",
+      "pass": true
+    },
+    {
+      "name": "invalid import is rejected",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "passed": 16
+}

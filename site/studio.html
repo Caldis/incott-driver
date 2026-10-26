@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Incott G23 / G24 本地鼠标设置，支持按键、DPI、性能与宏。"
+    />
+    <title>Incott · 鼠标工作台</title>
+    <link rel="icon" href="studio-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="studio.css" />
+    <script defer src="js/define-v100.js"></script>
+    <script defer src="core/incott-original.js"></script>
+    <script defer src="core/adapter.js"></script>
+    <script defer src="studio.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#workspace">跳到设置</a>
+    <header class="topbar">
+      <a class="wordmark" href="studio.html" aria-label="Incott 鼠标工作台"
+        >incott<span>®</span></a
+      >
+      <span class="top-divider"></span><span class="app-name">鼠标工作台</span>
+      <div class="top-actions">
+        <span class="local-label"><i></i> 本地运行</span
+        ><a href="original.html" id="original-link">原版驱动 ↗</a
+        ><button id="connect" class="primary">连接鼠标 <span>↗</span></button>
+      </div>
+    </header>
+    <main id="workspace">
+      <section class="device-bar" aria-label="设备状态">
+        <div class="device-title">
+          <span class="eyebrow">YOUR DEVICE</span>
+          <h1 id="model">G23 / G24<span>鼠标设置</span></h1>
+        </div>
+        <dl class="device-stats">
+          <div>
+            <dt>连接</dt>
+            <dd id="connection">未连接</dd>
+          </div>
+          <div>
+            <dt>当前 DPI</dt>
+            <dd id="current-dpi">—</dd>
+          </div>
+          <div>
+            <dt>回报率</dt>
+            <dd id="current-rate">—</dd>
+          </div>
+          <div>
+            <dt>电量</dt>
+            <dd id="battery">—</dd>
+          </div>
+        </dl>
+        <button
+          id="refresh"
+          class="icon-button"
+          aria-label="重新读取鼠标配置"
+          title="重新读取"
+        >
+          ↻
+        </button>
+      </section>
+      <div class="notice" id="notice" role="status" aria-live="polite">
+        连接鼠标，读取当前配置。也可以先浏览设置。
+      </div>
+      <div class="studio-layout">
+        <section class="device-stage" aria-label="鼠标按键示意">
+          <div class="stage-heading">
+            <span class="stage-dot"></span
+            ><span id="stage-label">选择一个按键，重新定义它。</span
+            ><button class="text-button" id="test-toggle" aria-pressed="false">
+              按键测试 ↗
+            </button>
+          </div>
+          <div class="mouse-canvas">
+            <div class="mouse-shadow"></div>
+            <img
+              id="mouse-photo"
+              src="images/mouseG24.png"
+              alt="Incott G24 鼠标俯视图"
+              draggable="false"
+            />
+            <div class="mouse-hotspots" aria-label="点选鼠标实际按键">
+              <button
+                class="hotspot h0"
+                data-button="0"
+                aria-label="选择左键"
+              ></button
+              ><button
+                class="hotspot h1"
+                data-button="1"
+                aria-label="选择右键"
+              ></button
+              ><button
+                class="hotspot h2"
+                data-button="2"
+                aria-label="选择滚轮按下"
+              ></button
+              ><button
+                class="hotspot h3"
+                data-button="3"
+                aria-label="选择前侧键"
+              ></button
+              ><button
+                class="hotspot h4"
+                data-button="4"
+                aria-label="选择后侧键"
+              ></button
+              ><button
+                class="hotspot h5"
+                data-button="5"
+                aria-label="选择DPI 键"
+              ></button>
+            </div>
+            <svg class="callout-lines" viewBox="0 0 760 440" aria-hidden="true">
+              <path
+                d="M190 95H274L327 110M568 95H487L433 110M570 200H442L384 151M190 265H258L292 216M190 350H261L292 269M570 332H451L382 236"
+              />
+            </svg>
+            <button class="callout left c0 selected" data-button="0">
+              <b>01</b><span>左键<small data-binding="0">—</small></span>
+            </button>
+            <button class="callout right c1" data-button="1">
+              <span>右键<small data-binding="1">—</small></span
+              ><b>02</b>
+            </button>
+            <button class="callout right c2" data-button="2">
+              <span>滚轮按下<small data-binding="2">—</small></span
+              ><b>03</b>
+            </button>
+            <button class="callout left c3" data-button="3">
+              <b>04</b><span>前侧键<small data-binding="3">—</small></span>
+            </button>
+            <button class="callout left c4" data-button="4">
+              <b>05</b><span>后侧键<small data-binding="4">—</small></span>
+            </button>
+            <button class="callout right c5" data-button="5">
+              <span>DPI 键<small data-binding="5">—</small></span
+              ><b>06</b>
+            </button>
+            <span class="canvas-note">点击按键编号编辑</span
+            ><span class="canvas-mark">G SERIES / 06 KEYS</span>
+          </div>
+          <div class="stage-bottom">
+            <span id="selected-summary">01 · 左键</span
+            ><span id="test-result" aria-live="polite">修改后统一写入鼠标</span>
+          </div>
+        </section>
+        <aside class="preset-panel">
+          <div class="panel-heading">
+            <h2>本地预设</h2>
+            <span class="small-label">保存在这台电脑</span>
+          </div>
+          <div id="presets" class="preset-list"></div>
+          <button id="save-preset" class="add-preset">＋ 保存当前设置</button>
+          <div class="preset-tools">
+            <button id="export">导出配置 <span>↓</span></button
+            ><button id="import">导入配置 <span>↑</span></button
+            ><input
+              id="import-file"
+              type="file"
+              accept=".json,application/json"
+              hidden
+            />
+          </div>
+          <div class="preset-note">
+            <span>随鼠标保存</span>
+            <p>写入后可以关闭网页。预设可导出备份，换一台电脑继续使用。</p>
+          </div>
+        </aside>
+      </div>
+      <section class="editor" aria-label="设置编辑区">
+        <nav class="tabs" aria-label="设置分类">
+          <button data-tab="keys" class="active" aria-selected="true">
+            按键定义</button
+          ><button data-tab="dpi" aria-selected="false">DPI 灵敏度</button
+          ><button data-tab="performance" aria-selected="false">性能设置</button
+          ><button data-tab="macros" aria-selected="false">宏</button>
+        </nav>
+        <div class="editor-body" id="editor-body"></div>
+      </section>
+    </main>
+    <footer class="savebar">
+      <span class="save-state"
+        ><i id="save-indicator"></i
+        ><span id="save-state">尚未连接设备</span></span
+      >
+      <div>
+        <button id="discard" class="secondary">撤销修改</button
+        ><button id="apply" class="primary">写入鼠标 <span>↗</span></button>
+      </div>
+    </footer>
+    <dialog id="preset-dialog">
+      <form method="dialog">
+        <h2>保存为本地预设</h2>
+        <label
+          >名称<input
+            id="preset-name"
+            maxlength="32"
+            required
+            placeholder="例如：日常 / 游戏"
+        /></label>
+        <div class="dialog-actions">
+          <button value="cancel" formnovalidate>取消</button
+          ><button value="save" class="primary">保存预设</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

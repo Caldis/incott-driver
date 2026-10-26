@@ -1,0 +1,10 @@
+{
+  "started": "2026-10-26T17:19:05.750Z",
+  "sent": true,
+  "down": 0,
+  "up": 0,
+  "restored": true,
+  "previous": 196615,
+  "bindingReadback": 327689,
+  "reason": "timeout"
+}
