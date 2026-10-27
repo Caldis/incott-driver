@@ -91,3 +91,7 @@
 - 本轮没有向真实鼠标写入。当前独立 Chrome 测试会话已无历史 HID 授权，不绕过原生选择框，也不再次要求用户配合；真实双端口证据来自只读 hidapi 查询，浏览器自动选择与失败恢复使用模拟设备验证。原生脚本由父进程限制总时长 12 秒。
 - 字体缓存回归复现方式：Python subprocess.run(['git','show','7ffb327:site/fonts/incott-ui-v1.woff2'], stdout=PIPE, check=True) 将原始字节写到 output/playwright/font-before-feedback.woff2，再在隔离 Playwright 会话执行 test/font-cache.browser.js。不要用 PowerShell 文本管道导出 WOFF2。
 - 发布完成：acf33a2069e6661f18fdd6612660e7319402a4ca，Actions https://github.com/Caldis/incott-driver/actions/runs/40426845049 成功。Pages 的 index/studio HTML、CSS、UI JS、adapter、WOFF2 与字体来源 JSON 共 7 文件与本地一致。实际页面标题 incott网页驱动；CDP 显示反馈、页头名称、字标、原版入口的全部字形均来自自带 Noto Sans SC；无 console error/warning，无外部资源请求。最终字体 SHA-256 前缀 1f13701e8564。独立测试浏览器已关闭，未占用真实 HID。原有离线包 D:\Code\agentic\outputs\incott-driver\incott-driver-complete.zip 原位更新。
+
+## 停用定时检查（2026-10-27）
+
+- 用户明确要求“每小时检查关掉”。已通过应用自动化工具将 incott-issues 从 ACTIVE 改为 PAUSED，并核对本地调度文件确为 PAUSED。保留任务配置和既有 Issue 授权策略，不再定时检查，也不得自行恢复。
