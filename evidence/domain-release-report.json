@@ -1,0 +1,104 @@
+{
+  "commit": "fc2c1f3770b8befcc24c343eaed6e58a0136b35a",
+  "workflow": "https://github.com/Caldis/incott-driver/actions/runs/40507238410",
+  "verifiedAt": "2026-10-27T13:19:48.651Z",
+  "domain": {
+    "name": "incott.caldis.me",
+    "cnameTarget": "caldis.github.io",
+    "proxied": false,
+    "httpsEnforced": true,
+    "certificate": {
+      "state": "approved",
+      "description": "The certificate has been approved.",
+      "domains": [
+        "incott.caldis.me"
+      ],
+      "expires_at": "2027-01-25"
+    }
+  },
+  "assets": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "11b46377f51cd56614e2489e7d7b8a4d54a3f88db4cbcb3bfd0d8e558300895a"
+    },
+    {
+      "path": "studio.html",
+      "status": 200,
+      "sha256": "11b46377f51cd56614e2489e7d7b8a4d54a3f88db4cbcb3bfd0d8e558300895a"
+    },
+    {
+      "path": "studio.css?v=20261027.5",
+      "status": 200,
+      "sha256": "b382bba404bfb7da59dafa68d39147402186c5e89f591ebe6ea73d6403d0b3b3"
+    },
+    {
+      "path": "studio.js?v=20261027.4",
+      "status": 200,
+      "sha256": "4b15b3f4407dca06e91deef855738e1c5088d483afd11f26c66dfa89bdbf9cb2"
+    },
+    {
+      "path": "core/adapter.js?v=20261027.4",
+      "status": 200,
+      "sha256": "2f4416b12fbfd5ab0fdd6b8c0e58285874d03d2c58d42a6a32138b00b0e8cdc6"
+    },
+    {
+      "path": "fonts/incott-ui-v1.woff2?sha256=7cb683c7ea8c",
+      "status": 200,
+      "sha256": "7cb683c7ea8c56975348e25595551869ccd35603af8b00481c42e22cc652bcb2"
+    },
+    {
+      "path": "fonts/source.json",
+      "status": 200,
+      "sha256": "dc80ee30b4f50f927953ab53507e919bd9d39cf96ce1590a25a11794cae1f193"
+    }
+  ],
+  "redirects": [
+    {
+      "from": "http://incott.caldis.me/",
+      "chain": [
+        {
+          "url": "http://incott.caldis.me/",
+          "status": 301,
+          "location": "https://incott.caldis.me/"
+        },
+        {
+          "url": "https://incott.caldis.me/",
+          "status": 200,
+          "location": null
+        }
+      ]
+    },
+    {
+      "from": "https://caldis.github.io/incott-driver/",
+      "chain": [
+        {
+          "url": "https://caldis.github.io/incott-driver/",
+          "status": 301,
+          "location": "http://incott.caldis.me/"
+        },
+        {
+          "url": "http://incott.caldis.me/",
+          "status": 301,
+          "location": "https://incott.caldis.me/"
+        },
+        {
+          "url": "https://incott.caldis.me/",
+          "status": 200,
+          "location": null
+        }
+      ]
+    }
+  ],
+  "browser": {
+    "connection": "2.4G · 8K 接收器",
+    "feedback": "https://github.com/Caldis/incott-driver/issues/new/choose",
+    "model": "G24",
+    "notice": "已连接鼠标，当前配置已读取。",
+    "repository": "https://github.com/Caldis/incott-driver",
+    "title": "incott网页驱动",
+    "writeDisabled": true,
+    "url": "https://incott.caldis.me/",
+    "consoleErrors": []
+  }
+}

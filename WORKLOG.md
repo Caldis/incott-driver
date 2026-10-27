@@ -104,3 +104,9 @@
 - 先核对 incott.caldis.me 无现存 DNS 记录，再设置 GitHub Pages cname，随后通过 cf 创建 CNAME→caldis.github.io、TTL 自动、proxied=false。只操作这个子域名。Actions 发布模式中 GitHub 不使用 CNAME 文件，因此通过 Pages API 配置，不写多余 site/CNAME。
 - 主页新增仓库链接，与反馈入口共享 header-link 样式和全局字体；窄屏使用各自图标、44 px 点击区域；补齐“仓库”两字的字体子集并更新内容哈希。30 项自动测试、31 项模拟 HID 浏览器检查通过，截图确认桌面与手机布局正常，没有真实鼠标写入。
 - 本地验证服务在 herdr 的 Incott 终端工作区运行，使用现有项目目录，内存 128 MB 与时长 1 小时上限。正式域名的 DNS/证书核对和发布结果继续追加。
+- 页面提交 fc2c1f3770b8befcc24c343eaed6e58a0136b35a 已部署成功，Actions https://github.com/Caldis/incott-driver/actions/runs/40507238410 。新域名 HTTP 下 7 个关键资源与本地一致；本地验证用的浏览器和 herdr 工作区已关闭。
+- DNS 创建时间为 12:51 UTC。Google 与 Cloudflare DoH 均已返回正确 CNAME 和 GitHub Pages 的 4 个 A 地址；GitHub DNS health 在 13:02 UTC 确认为 valid=true、https_eligible=true、caa_error=null。初期 GitHub 检测为 NXDomain；按官方排查文档重新保存过一次域名，随后检测通过，但不能断言这个操作是通过的唯一原因。
+- 本机 UDP A 查询返回 198.18.24.205，CNAME 查询显示不存在，与公共 DoH 的结果不同；不能拿此结果判定公网 DNS 配置失败。13:06 UTC 时 GitHub 仍 https_certificate=null，开启 https_enforced 返回“证书不存在”，严格 TLS 校验也未通过，因此尚未把 HTTPS 记为完成。继续等证书并核对实际浏览器，不能用忽略证书错误代替验收。
+- 完成状态：在已通过 DNS 检查后，从真实 Chrome 的 Pages 设置页重新保存域名，随后 Enforce HTTPS 变为可用并已勾选；13:13 UTC 的 API 确认 https_certificate.state=approved（域名 incott.caldis.me，2027-01-25 到期），https_enforced=true。不能据此断言 REST 不会自动签发，UI 操作和后台队列时序可能同时起作用。
+- 严格 TLS 访问新域名 HTTP 200，7 个 HTTPS 资源与本地逐字节一致。HTTP 与原 Pages 地址完整跳转链最终均为 https://incott.caldis.me/ 。不同 GitHub 边缘缓存的旧站首跳暂有 http/https 差别，HTTP 入口再 301 到 HTTPS；验收核对有限跳转链的最终地址，不将首跳形式当作全部结果。证据为 evidence/domain-release-report.json。
+- 实际用户 Chrome 的 HTTPS 页面成功自动读取 G24 无线 8K 接收器，显示正常键位和当前参数，控制台无 error/warning；没有进行参数写入、按键或宏实验。只增加“真实无线启动只读成功”的证据，不推广成无线参数写入已验证。正式页面已留给用户，设置页由工具自动清理；截图保存 output/playwright/domain-live.jpg。
