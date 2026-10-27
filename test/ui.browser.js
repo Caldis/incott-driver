@@ -28,10 +28,11 @@ async (page) => {
     };
     window.mockHardware = state;
     class FakeDevice extends EventTarget {
-      constructor() {
+      constructor(pid = 0x622c, reachable = true) {
         super();
         this.vendorId = 0x093a;
-        this.productId = 0x622c;
+        this.productId = pid;
+        this.reachable = reachable;
         this.opened = false;
       }
       async open() {
@@ -60,7 +61,8 @@ async (page) => {
       async receiveFeatureReport() {
         const [cmd, a] = state.cmd;
         let out = [cmd, 0, 0, 0, 0, 0, 0, 0];
-        if (cmd === 0x8f) out = [cmd, 1, 3, 0, 0xf1, 0, 0, 0];
+        if (cmd === 0x8f)
+          out = [cmd, 1, 3, this.productId === 0x522c ? 2 : 0, 0xf1, 0, 0, 0];
         if (cmd === 0x89) out = [cmd, 80, 0, state.rate, state.active, 0, 0, 0];
         if (cmd === 0x81) out[1] = state.rate;
         if (cmd === 0x82)
@@ -91,6 +93,7 @@ async (page) => {
             0,
           ];
         }
+        if (cmd === 0x83 && !this.reachable) out = new Array(8).fill(0);
         return new DataView(new Uint8Array([9, ...out]).buffer);
       }
       async sendReport() {
@@ -98,10 +101,13 @@ async (page) => {
       }
     }
     const device = new FakeDevice();
+    const receiver = new FakeDevice(0x522c, false);
+    window.mockDevices = { device, receiver };
+    localStorage.setItem("incott-last-pid", String(0x522c));
     Object.defineProperty(window, "HIDDevice", { value: FakeDevice });
     Object.defineProperty(navigator, "hid", {
       value: {
-        getDevices: async () => [device],
+        getDevices: async () => [receiver, device],
         requestDevice: async () => [device],
         addEventListener() {},
       },
@@ -115,6 +121,53 @@ async (page) => {
   check(
     "initial reads do not write",
     await page.evaluate(() => mockHardware.writes === 0),
+  );
+  check(
+    "unresponsive remembered receiver falls back to USB",
+    await page.evaluate(
+      () =>
+        incott.snapshot.model === "G24" &&
+        !incott.snapshot.wireless &&
+        mockDevices.device.opened &&
+        !mockDevices.receiver.opened,
+    ),
+  );
+  check(
+    "product name is incott网页驱动",
+    (await page.title()) === "incott网页驱动",
+  );
+  await page.evaluate(() => {
+    navigator.hid.requestDevice = async () => [mockDevices.receiver];
+  });
+  await page.getByRole("button", { name: "切换设备", exact: true }).click();
+  await page
+    .getByRole("status")
+    .filter({ hasText: "当前接收器未返回 DPI 配置" })
+    .waitFor();
+  check(
+    "failed receiver stays disconnected without writing defaults",
+    await page.evaluate(
+      () =>
+        incott.snapshot === null &&
+        mockHardware.writes === 0 &&
+        !mockDevices.receiver.opened &&
+        document.getElementById("apply").disabled &&
+        document.getElementById("current-dpi").textContent === "—",
+    ),
+  );
+  await page.evaluate(() => {
+    navigator.hid.requestDevice = async () => [mockDevices.device];
+  });
+  await page.getByRole("button", { name: "连接鼠标 ↗", exact: true }).click();
+  await page
+    .getByRole("status")
+    .filter({ hasText: "已读取鼠标当前配置" })
+    .waitFor();
+  check(
+    "device chooser can recover from receiver failure",
+    await page.evaluate(
+      () => incott.snapshot?.wireless === false && mockHardware.writes === 0,
+    ),
   );
   const feedback = page.getByRole("link", {
     name: "问题反馈（GitHub Issues）",
@@ -136,6 +189,51 @@ async (page) => {
     ),
   );
   await page.evaluate(() => document.fonts.ready);
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send("DOM.enable");
+  await cdp.send("CSS.enable");
+  const documentNode = await cdp.send("DOM.getDocument");
+  const fonts = {};
+  for (const selector of [
+    ".feedback-label",
+    ".app-name",
+    ".wordmark",
+    "#original-link",
+  ]) {
+    const { nodeId } = await cdp.send("DOM.querySelector", {
+      nodeId: documentNode.root.nodeId,
+      selector,
+    });
+    fonts[selector] = (
+      await cdp.send("CSS.getPlatformFontsForNode", { nodeId })
+    ).fonts;
+  }
+  check(
+    "feedback and header glyphs all use the bundled font",
+    Object.values(fonts).every(
+      (items) => items.length > 0 && items.every((font) => font.isCustomFont),
+    ),
+  );
+  await cdp.detach();
+  check(
+    "font cache key and preload match",
+    await page.evaluate(() => {
+      const preload = document.querySelector('link[as="font"]').href;
+      return (
+        /\?sha256=[a-f0-9]{12}$/.test(preload) &&
+        Array.from(document.styleSheets).some((sheet) =>
+          Array.from(sheet.cssRules).some(
+            (rule) =>
+              rule instanceof CSSFontFaceRule &&
+              rule.style.src.includes(
+                new URL(preload).pathname.split("/").pop() +
+                  new URL(preload).search,
+              ),
+          ),
+        )
+      );
+    }),
+  );
   check(
     "bundled variable font loaded",
     await page.evaluate(() =>

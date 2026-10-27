@@ -79,3 +79,14 @@
 - 手动执行只读队列检查时没有开放 Issue，因此没有当前待实施任务。
 
 - 本次验收：24 项自动测试和 23 项隔离浏览器检查通过，反馈入口在 320 px 窄屏仍可见、不会横向溢出。GitHub GraphQL 已确认 Issue.lastEditedAt/editor 字段可用；本地调度文件已核对为 heartbeat、ACTIVE、每 1 小时。没有创建测试 Issue，也没有向任何 Issue 发评论。
+
+## 字体缓存、双端口连接与产品名（2026-10-27）
+
+- 用户指定名称为“incott网页驱动”。标题、导航无障碍名称、README 同步；页头 incott 字标与“网页驱动”共同显示。去掉字标单独的 Segoe 字体，继承全局字体。
+- 反馈文字字体不同已复现：7ffb327 字体子集缺少“问题反馈”四字，后续更新仍使用同一 URL。给浏览器注入旧字体后，CSS.getPlatformFontsForNode 显示四字全部来自系统字体；新会话拿到最新字体则正常。此前“新浏览器上字体相同，所以入口没问题”的检查不足以覆盖旧缓存。修法：保留一个字体文件，CSS 和 preload 同时用内容 SHA-256 构成缓存键，测试保证与实际字节一致；不增加多份字体。
+- 截图错误由 DPI 响应校验触发，不代表鼠标 DPI 已被改坏。只读 native HID 查询复现：8K 接收器 093a:522c 的 8f 返回 G24，但 83 连续返回全零；USB 093a:622c 的 83 连续为 83 06 02 00 00 00 00 00。前者为何没有返回配置仍未证实，不能断言固件损坏或推断无线功能已验证。原始响应和描述符收录 evidence/connection-readonly.json，不含序列号或设备路径。
+- 原先自动连接用 known.find，可能选到未返回配置的接收器；手动连接也复用第一项，使用户无法换端口。改为自动优先上次完整读取成功的 PID、无记录时优先有线，失败关闭句柄后尝试其他已授权端口；手动连接始终打开原生选择框，取消保留已有连接。命令回显异常最多重试三次；连续失败报具体原因，保持无快照与禁止写入，不用默认值替代。
+- 原生诊断最初曾按 65 字节读取 Feature report 并报 OSError；已推翻“该接口为 64 字节 Feature”的假设。实际报告描述符显示 report ID 9 的 Feature 载荷为 8 字节，hidapi 应传总长度 9。Input/Output 为 32 字节不能用于推断 Feature 长度。tools/read-hid-state.py 仅使用原码 8f/89/83/8e 查询，无设置或固件写入；hidapi 只装在忽略提交的项目 .local，运行时应用不需要它。
+- 本轮 30 项 Node 测试、29 项隔离模拟 HID 浏览器检查通过，包含失败接收器的错误文案、禁写状态及改选有线恢复。字体缓存回归在同一会话先注入 7ffb327 旧字体再恢复新版地址，反馈四字从系统字体切换为自带字体，且不再请求旧缓存 URL；报告为 evidence/font-cache-report.json。另补 Latin-1 符号覆盖（包括字标 ®），检查 CSS、HTML preload 与源字体哈希一致。
+- 本轮没有向真实鼠标写入。当前独立 Chrome 测试会话已无历史 HID 授权，不绕过原生选择框，也不再次要求用户配合；真实双端口证据来自只读 hidapi 查询，浏览器自动选择与失败恢复使用模拟设备验证。原生脚本由父进程限制总时长 12 秒。
+- 字体缓存回归复现方式：Python subprocess.run(['git','show','7ffb327:site/fonts/incott-ui-v1.woff2'], stdout=PIPE, check=True) 将原始字节写到 output/playwright/font-before-feedback.woff2，再在隔离 Playwright 会话执行 test/font-cache.browser.js。不要用 PowerShell 文本管道导出 WOFF2。

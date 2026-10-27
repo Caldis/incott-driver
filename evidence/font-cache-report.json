@@ -1,0 +1,22 @@
+{
+  "oldFontRequests": 1,
+  "before": [
+    {
+      "familyName": "?®®??_?",
+      "postScriptName": "_-",
+      "isCustomFont": false,
+      "glyphCount": 4
+    }
+  ],
+  "after": [
+    {
+      "familyName": "Noto Sans SC Thin",
+      "postScriptName": "Noto-Sans-SC-Thin",
+      "isCustomFont": true,
+      "glyphCount": 4
+    }
+  ],
+  "oldMissingGlyphsReproduced": true,
+  "currentGlyphsAllBundled": true,
+  "newURLBypassesOldCache": true
+}

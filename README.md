@@ -1,4 +1,4 @@
-# Incott 鼠标工作台
+# incott网页驱动
 
 为 Incott G23 / G24 保存的网页驱动，以及重新设计的个人使用界面。保留原版 WebHID 通信、参数编码和宏编码器，不加载原版 UI 或自动写入流程。
 
@@ -6,7 +6,7 @@
 
 ## 使用
 
-- 在线：[打开鼠标工作台](https://caldis.github.io/incott-driver/)。
+- 在线：[打开incott网页驱动](https://caldis.github.io/incott-driver/)。
 - 本地：安装 Node.js 22 或以上，双击 `start.cmd`，或在本目录执行 `npm start`。打开 `http://127.0.0.1:8765/`。
 - 使用桌面 Chrome / Edge，选择鼠标或接收器并授权。浏览器权限与网站地址绑定，从本地换到 Pages 时需要重新选择设备。
 - 所有运行资源（包括中文字体）在 `site/`，无 CDN、无 API 服务、无 npm 运行依赖；下载后可断外网使用。不要直接双击 HTML 文件，使用本地 HTTP 地址。

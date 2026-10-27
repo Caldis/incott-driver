@@ -74,6 +74,7 @@ class IncottController extends EventTarget {
     this.busy = false;
     this.fault = false;
     this.macroCache = {};
+    this.diagnostics = [];
     if (navigator.hid)
       navigator.hid.addEventListener("disconnect", (event) => {
         if (event.device === this.device?.handle) {
@@ -114,20 +115,30 @@ class IncottController extends EventTarget {
       throw new Error("请用 Chrome 或 Edge，在本机地址打开驱动。");
     if (this.fault) throw new Error("请重新插拔鼠标并刷新页面，再连接。");
     if (this.busy) throw new Error("设备正在通信，请稍候。");
-    const known = await navigator.hid.getDevices();
-    let found = known.find(
+    const known = (await navigator.hid.getDevices()).filter(
       (device) =>
         device.vendorId === 0x093a &&
         [0x622c, 0x522c].includes(device.productId),
     );
-    if (automatic && !found) return null;
-    if (!found) {
+    if (automatic && !known.length) return null;
+    let candidates = known;
+    if (automatic) {
+      let preferred = this.device?.curpid;
+      try {
+        preferred ||= Number(window.localStorage?.getItem("incott-last-pid"));
+      } catch {}
+      candidates = [...known].sort(
+        (a, b) =>
+          (b.productId === preferred ? 2 : b.productId === 0x622c ? 1 : 0) -
+          (a.productId === preferred ? 2 : a.productId === 0x622c ? 1 : 0),
+      );
+    } else {
       // A human may take longer than the HID-operation deadline to choose.
       // Hold the UI busy, but start the hardware timer only after selection.
       this.busy = true;
       this.dispatchEvent(new Event("busy"));
       try {
-        [found] = await navigator.hid.requestDevice({
+        candidates = await navigator.hid.requestDevice({
           filters: [
             {
               vendorId: 0x093a,
@@ -147,53 +158,95 @@ class IncottController extends EventTarget {
         this.busy = false;
         this.dispatchEvent(new Event("busy"));
       }
-      if (!found) throw new Error("未连接鼠标。请选择 Incott 鼠标或接收器。");
+      if (!candidates.length)
+        throw new Error("未连接鼠标。请选择 Incott 鼠标或接收器。");
     }
     return this.exclusive(async () => {
-      if (this.device?.isopend()) return this.read();
-      ace = new IncottHardware();
-      this.device = ace;
-      if (found) {
-        if (!found.opened) await found.open();
-        ace.handle = found;
-        ace.opened = true;
-        ace.curpid = found.productId;
-        ace.iswireless = found.productId === 0x522c;
-        found.oninputreport = _5o2woknpwy1q;
-        if (!(await ace.readPSD()) || !["G23", "G24"].includes(ace.devname)) {
+      let failure;
+      for (const found of candidates) {
+        try {
+          if (this.device?.isopend() && this.device.handle !== found)
+            await this.device.handle.close();
+          this.snapshot = null;
+          ace = new IncottHardware();
+          this.device = ace;
+          if (!found.opened) await found.open();
+          ace.handle = found;
+          ace.opened = true;
+          ace.curpid = found.productId;
+          ace.iswireless = found.productId === 0x522c;
+          found.oninputreport = _5o2woknpwy1q;
+          if (!(await ace.readPSD()) || !["G23", "G24"].includes(ace.devname)) {
+            throw new Error("设备型号未在当前支持范围内，请查看兼容性列表。");
+          }
+          ace.online = true;
+          await ace.readInfo();
+          ace.curOnBoard = await ace.readProfileIndex();
+          const state = await this.read();
+          try {
+            window.localStorage?.setItem(
+              "incott-last-pid",
+              String(found.productId),
+            );
+          } catch {}
+          return state;
+        } catch (error) {
+          failure = error;
           await found.close().catch(() => {});
           this.device = null;
-          throw new Error("设备型号未在当前支持范围内，请查看兼容性列表。");
+          this.snapshot = null;
+          if (this.fault) throw error;
         }
-        ace.online = true;
-        await ace.readInfo();
-        ace.curOnBoard = await ace.readProfileIndex();
       }
-      return this.read();
+      this.dispatchEvent(new Event("disconnect"));
+      throw failure || new Error("没有可读取的设备。");
     });
   }
   async readResponse(command, selector) {
-    const data = await this.device.readDevice(command, selector);
-    if (
-      !data ||
-      data[0] !== command ||
-      (selector !== undefined && data[1] !== selector)
-    )
-      return null;
-    return Array.from(data);
+    for (let attempt = 0; attempt < 3; attempt++) {
+      if (!this.device || this.device.cancelled) return null;
+      const logStart = this.device.logText?.length || 0;
+      const data = await this.device.readDevice(command, selector);
+      const valid =
+        !!data &&
+        data[0] === command &&
+        (selector === undefined || data[1] === selector);
+      this.diagnostics.push({
+        command,
+        selector,
+        attempt: attempt + 1,
+        pid: this.device.curpid,
+        response: data ? Array.from(data) : null,
+        valid,
+        detail: valid ? "" : this.device.logText?.slice(logStart),
+      });
+      if (this.diagnostics.length > 24) this.diagnostics.shift();
+      if (valid) return Array.from(data);
+      if (attempt < 2) await _nfmekzxlqota(50);
+    }
+    return null;
   }
   async read() {
     const dev = this.device;
     if (!dev?.isopend()) throw new Error("请先连接鼠标。");
     if (!(await dev.readInfo())) throw new Error("无法读取设备状态。");
     const dpiInfo = await this.readResponse(0x83);
+    if (!dpiInfo) {
+      throw new Error(
+        dev.iswireless
+          ? "当前接收器未返回 DPI 配置，请重新选择 USB 有线鼠标。"
+          : "DPI 档位读取失败，请重新选择设备后重试。",
+      );
+    }
     if (
-      !dpiInfo ||
+      dpiInfo.length < 3 ||
       dpiInfo[1] < 1 ||
       dpiInfo[1] > 6 ||
       dpiInfo[2] >= dpiInfo[1]
     )
-      throw new Error("DPI 档位响应无效，未使用默认值覆盖。");
+      throw new Error(
+        "设备返回的 DPI 档位数据不符合原驱动格式，未更改鼠标设置。",
+      );
     const snapshot = {
       format: "incott-studio",
       version: 1,

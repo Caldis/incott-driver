@@ -147,7 +147,7 @@
     $("connect").setAttribute("aria-busy", String(busy));
     $("apply").setAttribute("aria-busy", String(busy));
     $("connect").innerHTML = connected
-      ? '已连接 <span class="connection-dot" aria-hidden="true"></span>'
+      ? '切换设备 <span class="connection-dot" aria-hidden="true"></span>'
       : "连接鼠标 <span>↗</span>";
     $("refresh").disabled = !connected || busy || dirty.size > 0;
     $("apply").disabled = !connected || busy || !dirty.size || recording;

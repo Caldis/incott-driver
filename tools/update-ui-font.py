@@ -14,7 +14,7 @@ root = Path(__file__).resolve().parents[1]
 sources = ['site/studio.html', 'site/studio.js', 'site/core/adapter.js']
 text = ''.join((root / name).read_text(encoding='utf-8') for name in sources)
 characters = ''.join(sorted(set(
-    re.findall(r'[\u2000-\u27ff\u3000-\u30ff\u3400-\u9fff\uff00-\uffef]', text)
+    re.findall(r'[\u00a0-\u00ff\u2000-\u27ff\u3000-\u30ff\u3400-\u9fff\uff00-\uffef]', text)
     + [chr(code) for code in range(32, 127)]
 )))
 css_url = 'https://fonts.googleapis.com/css2?' + urllib.parse.urlencode({
@@ -32,10 +32,21 @@ assert data[:4] == b'wOF2', 'Expected WOFF2'
 font_dir = root / 'site/fonts'
 font_dir.mkdir(exist_ok=True)
 (font_dir / 'incott-ui-v1.woff2').write_bytes(data)
+digest = hashlib.sha256(data).hexdigest()
+asset_url = 'fonts/incott-ui-v1.woff2?sha256=' + digest[:12]
+# Keep one font asset in this project; change its URL when the bytes change.
+css_path = root / 'site/studio.css'
+style = css_path.read_text(encoding='utf-8')
+style = re.sub(r'fonts/incott-ui-v1\.woff2(?:\?sha256=[a-f0-9]+)?', asset_url, style)
+css_path.write_text(style, encoding='utf-8')
+html_path = root / 'site/studio.html'
+html = html_path.read_text(encoding='utf-8')
+html = re.sub(r'fonts/incott-ui-v1\.woff2(?:\?sha256=[a-f0-9]+)?', asset_url, html)
+html_path.write_text(html, encoding='utf-8')
 (font_dir / 'source.json').write_text(json.dumps({
     'family': 'Noto Sans SC', 'kind': 'variable subset for UI strings and ASCII',
     'source': 'https://fonts.google.com/noto/specimen/Noto+Sans+SC',
     'license': 'OFL-1.1', 'download_url': font_url,
-    'sha256': hashlib.sha256(data).hexdigest(), 'characters': characters,
+    'sha256': digest, 'asset_url': asset_url, 'characters': characters,
 }, ensure_ascii=False, indent=2), encoding='utf-8')
 print(f'Saved {len(data)} bytes for {len(characters)} characters; weights 100–900.')

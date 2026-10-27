@@ -16,13 +16,30 @@ test("UI font is a bundled, intact WOFF2 asset", () => {
     source.sha256,
   );
   assert.ok(font.length < 200_000);
+  const assetURL = `fonts/incott-ui-v1.woff2?sha256=${source.sha256.slice(0, 12)}`;
+  assert.equal(source.asset_url, assetURL);
+  for (const name of ["studio.html", "index.html", "studio.css"])
+    assert.ok(
+      fs.readFileSync(path.join(root, name), "utf8").includes(assetURL),
+      `${name}: font cache key must match its bytes`,
+    );
   for (const name of ["studio.html", "studio.js", "core/adapter.js"]) {
     const text = fs.readFileSync(path.join(root, name), "utf8");
-    for (const character of text.match(/[\u3400-\u9fff]/gu) || [])
+    for (const character of text.match(
+      /[\u00a0-\u00ff\u2000-\u27ff\u3000-\u30ff\u3400-\u9fff\uff00-\uffef]/gu,
+    ) || [])
       assert.ok(
         source.characters.includes(character),
         `${name}: missing ${character}; run tools/update-ui-font.py`,
       );
+  }
+});
+
+test("UI uses the requested product name", () => {
+  for (const name of ["studio.html", "index.html"]) {
+    const html = fs.readFileSync(path.join(root, name), "utf8");
+    assert.ok(html.includes("<title>incott网页驱动</title>"));
+    assert.ok(!html.includes("工作台") && !html.includes("控制台"));
   }
 });
 function context() {
@@ -174,6 +191,106 @@ test("malformed command or selector echoes are rejected", async () => {
       `(async()=>{const c=new IncottController();c.device={readDevice:async()=>[0x84,2,1]};return await c.readResponse(0x84,1);})()`,
     ),
     null,
+  );
+});
+
+test("transient read mismatch is retried and recorded without writes", async () => {
+  const { run } = context();
+  assert.equal(
+    await run(`(async()=>{
+    const c=new IncottController();let attempts=0;
+    c.device={curpid:0x622c,readDevice:async()=>++attempts===1?[0,0,0]:[0x83,6,2]};
+    const result=await c.readResponse(0x83);
+    return attempts===2&&result[1]===6&&c.diagnostics.length===2&&!c.diagnostics[0].valid&&c.diagnostics[1].valid;
+  })()`),
+    true,
+  );
+});
+
+test("zero or malformed DPI responses never create a default snapshot", async () => {
+  const { run } = context();
+  assert.equal(
+    await run(`(async()=>{
+    for (const response of [[0,0,0],[0x83,0,0],[0x83,7,0],[0x83,6,6]]) {
+      const c=new IncottController();let later=0;
+      c.device={isopend:()=>true,iswireless:true,readInfo:async()=>true,
+        readDevice:async()=>response,readUsbRate:async()=>{later++;}};
+      try {await c.refresh();return false;} catch(error) {
+        if(!error.message.includes('DPI')||c.snapshot!==null||later!==0)return false;
+      }
+    }
+    return true;
+  })()`),
+    true,
+  );
+});
+
+// Exercise the real vendor packet reader with both authorized transports.
+// These are the response shapes measured in evidence/connection-readonly.json.
+const connectionFixture = `
+  let writes=0,chooser=0;
+  function endpoint(pid,reachable=true) {
+    return {vendorId:0x093a,productId:pid,opened:false,opens:0,closes:0,command:0,
+      async open(){this.opened=true;this.opens++;},
+      async close(){this.opened=false;this.closes++;},
+      async sendFeatureReport(id,data){this.command=data[0];if(data[0]<0x80)writes++;},
+      async receiveFeatureReport(){
+        const cmd=this.command;
+        const data=cmd===0x8f?[cmd,1,3,pid===0x522c?2:0,0xf1,0,0,0]
+          :cmd===0x89?[cmd,80,2,1,2,0,0,0]
+          :cmd===0x83?(reachable?[cmd,6,2,0,0,0,0,0]:[0,0,0,0,0,0,0,0])
+          :[cmd,0,0,0,0,0,0,0];
+        return new DataView(new Uint8Array([9,...data]).buffer);
+      }};
+  }
+  const wired=endpoint(0x622c),receiver=endpoint(0x522c,false);
+  navigator.hid.getDevices=async()=>[receiver,wired];
+  navigator.hid.requestDevice=async()=>{chooser++;return [wired];};
+  // Limit each probe to the actual packet reader; full snapshot guards are tested above.
+  IncottController.prototype.read=async function(){
+    const data=await this.readResponse(0x83);
+    if(!data)throw new Error('DPI read failed');
+    this.snapshot={model:'G24',pid:this.device.curpid};return this.snapshot;
+  };
+`;
+
+test("automatic connection prefers wired over the first granted receiver", async () => {
+  const { run } = context();
+  assert.equal(
+    await run(`(async()=>{${connectionFixture}
+    const c=new IncottController();const result=await c.connect(true);
+    return result.pid===0x622c&&wired.opens===1&&receiver.opens===0&&writes===0&&chooser===0;
+  })()`),
+    true,
+  );
+});
+
+test("failed remembered receiver is closed before trying wired", async () => {
+  const { run } = context();
+  assert.equal(
+    await run(`(async()=>{${connectionFixture}
+    let saved;window.localStorage={getItem:()=>String(0x522c),setItem:(key,value)=>saved=value};
+    const c=new IncottController();const result=await c.connect(true);
+    return result.pid===0x622c&&receiver.opens===1&&!receiver.opened&&receiver.closes===1
+      &&wired.opened&&saved===String(0x622c)&&writes===0;
+  })()`),
+    true,
+  );
+});
+
+test("manual connection always opens the chooser and cancellation preserves connection", async () => {
+  const { run } = context();
+  assert.equal(
+    await run(`(async()=>{${connectionFixture}
+    const c=new IncottController();await c.connect(true);const before=c.snapshot;
+    navigator.hid.requestDevice=async()=>{chooser++;return [];};
+    try{await c.connect();return false;}catch{}
+    if(chooser!==1||c.snapshot!==before||!wired.opened||c.busy)return false;
+    navigator.hid.requestDevice=async()=>{chooser++;return [wired];};
+    const result=await c.connect();
+    return chooser===2&&result.pid===0x622c&&writes===0;
+  })()`),
+    true,
   );
 });
 test("second operation is rejected while HID is busy", async () => {

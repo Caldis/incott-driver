@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Incott UI";
-  src: url("fonts/incott-ui-v1.woff2") format("woff2");
+  src: url("fonts/incott-ui-v1.woff2?sha256=1f13701e8564") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -132,8 +132,6 @@ button.text-button {
   font-weight: 800;
   letter-spacing: -2.7px;
   line-height: 1;
-
-  font-family: "Segoe UI Variable Text", "Incott UI", sans-serif;
 }
 .wordmark span {
   font-size: var(--text-ui);
@@ -1030,8 +1028,6 @@ dialog input {
   }
   .wordmark {
     font-size: 30px;
-
-    font-family: "Segoe UI Variable Text", "Incott UI", sans-serif;
   }
   .app-name,
   .local-label {
