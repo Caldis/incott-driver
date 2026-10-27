@@ -6,9 +6,9 @@
 
 ## 使用
 
-- 在线：[打开incott网页驱动](https://caldis.github.io/incott-driver/)。
+- 在线：[打开incott网页驱动](https://incott.caldis.me/)。原 GitHub Pages 地址会跳转到这个域名。
 - 本地：安装 Node.js 22 或以上，双击 `start.cmd`，或在本目录执行 `npm start`。打开 `http://127.0.0.1:8765/`。
-- 使用桌面 Chrome / Edge，选择鼠标或接收器并授权。浏览器权限与网站地址绑定，从本地换到 Pages 时需要重新选择设备。
+- 使用桌面 Chrome / Edge，选择鼠标或接收器并授权。浏览器权限与网站地址绑定，从本地或旧域名切换时需要重新选择设备。
 - 所有运行资源（包括中文字体）在 `site/`，无 CDN、无 API 服务、无 npm 运行依赖；下载后可断外网使用。不要直接双击 HTML 文件，使用本地 HTTP 地址。
 - 参数写入后保存在鼠标，网页可以关闭。预设和宏库保存在当前浏览器；重要配置请导出 JSON 文件。
 - 如需终端断线后继续运行，使用自己的 herdr 会话运行 `node server.cjs`。普通启动脚本在当前终端前台运行，关闭终端即停止。
@@ -34,7 +34,7 @@
 
 ## 反馈与维护
 
-页面右上角有 [问题反馈入口](https://github.com/Caldis/incott-driver/issues/new/choose)，可填写问题或改进建议。处理规则见 [ISSUE_POLICY.md](ISSUE_POLICY.md)：Caldis 提交的问题直接处理，第三方问题需 Caldis 加 `codex:implement` 后才处理。
+页面右上角有 [GitHub 仓库入口](https://github.com/Caldis/incott-driver) 和单独的 [问题反馈入口](https://github.com/Caldis/incott-driver/issues/new/choose)。每小时自动检查已停用；手动处理时的授权规则见 [ISSUE_POLICY.md](ISSUE_POLICY.md)。
 
 ## 开发与验证
 

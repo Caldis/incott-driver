@@ -1,0 +1,130 @@
+{
+  "checks": [
+    {
+      "name": "initial reads do not write",
+      "pass": true
+    },
+    {
+      "name": "unresponsive remembered receiver falls back to USB",
+      "pass": true
+    },
+    {
+      "name": "product name is incott网页驱动",
+      "pass": true
+    },
+    {
+      "name": "failed receiver stays disconnected without writing defaults",
+      "pass": true
+    },
+    {
+      "name": "device chooser can recover from receiver failure",
+      "pass": true
+    },
+    {
+      "name": "GitHub entry opens the project repository",
+      "pass": true
+    },
+    {
+      "name": "feedback links to GitHub issue chooser",
+      "pass": true
+    },
+    {
+      "name": "stylesheet applied",
+      "pass": true
+    },
+    {
+      "name": "feedback and header glyphs all use the bundled font",
+      "pass": true
+    },
+    {
+      "name": "font cache key and preload match",
+      "pass": true
+    },
+    {
+      "name": "bundled variable font loaded",
+      "pass": true
+    },
+    {
+      "name": "UI text is at least 13px",
+      "pass": true
+    },
+    {
+      "name": "six leaders follow actual key targets",
+      "pass": true
+    },
+    {
+      "name": "tabs support arrow-key navigation",
+      "pass": true
+    },
+    {
+      "name": "editing only creates draft",
+      "pass": true
+    },
+    {
+      "name": "DPI write reaches transport and clears draft",
+      "pass": true
+    },
+    {
+      "name": "write preserves mouse canvas geometry",
+      "pass": true
+    },
+    {
+      "name": "wired UI caps rate at 1000 Hz",
+      "pass": true
+    },
+    {
+      "name": "discard restores original read value",
+      "pass": true
+    },
+    {
+      "name": "swap updates only pending bindings",
+      "pass": true
+    },
+    {
+      "name": "key search filters palette",
+      "pass": true
+    },
+    {
+      "name": "macro captures down and up",
+      "pass": true
+    },
+    {
+      "name": "macro saved locally",
+      "pass": true
+    },
+    {
+      "name": "preset saved locally",
+      "pass": true
+    },
+    {
+      "name": "no horizontal overflow at 1440",
+      "pass": true
+    },
+    {
+      "name": "no horizontal overflow at 820",
+      "pass": true
+    },
+    {
+      "name": "no horizontal overflow at 390",
+      "pass": true
+    },
+    {
+      "name": "no horizontal overflow at 320",
+      "pass": true
+    },
+    {
+      "name": "feedback entry stays visible on narrow screens",
+      "pass": true
+    },
+    {
+      "name": "GitHub entry stays visible on narrow screens",
+      "pass": true
+    },
+    {
+      "name": "invalid import is rejected",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "passed": 31
+}

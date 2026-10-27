@@ -10,13 +10,13 @@
     <title>incott网页驱动</title>
     <link
       rel="preload"
-      href="fonts/incott-ui-v1.woff2?sha256=1f13701e8564"
+      href="fonts/incott-ui-v1.woff2?sha256=7cb683c7ea8c"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link rel="icon" href="studio-icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="studio.css?v=20261027.4" />
+    <link rel="stylesheet" href="studio.css?v=20261027.5" />
     <script defer src="js/define-v100.js"></script>
     <script defer src="core/incott-original.js"></script>
     <script defer src="core/adapter.js?v=20261027.4"></script>
@@ -32,7 +32,19 @@
       <div class="top-actions">
         <span class="local-label"><i></i> 本地运行</span
         ><a
-          class="feedback-link"
+          class="header-link github-link"
+          href="https://github.com/Caldis/incott-driver"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub 仓库"
+          title="查看 GitHub 仓库"
+          ><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path
+              d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15A10.8 10.8 0 0 1 12 6.17c.96 0 1.92.13 2.82.38 2.15-1.46 3.09-1.15 3.09-1.15.62 1.55.23 2.7.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.04.76 2.1v3.08c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"
+            /></svg
+          ><span class="header-link-label github-label">GitHub</span></a
+        ><a
+          class="header-link feedback-link"
           href="https://github.com/Caldis/incott-driver/issues/new/choose"
           target="_blank"
           rel="noopener"
@@ -43,7 +55,7 @@
               d="M5 4h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
             />
             <path d="M6.5 8h7M6.5 11h4" /></svg
-          ><span class="feedback-label">问题反馈</span></a
+          ><span class="header-link-label feedback-label">问题反馈</span></a
         ><a href="original.html" id="original-link">原版驱动 ↗</a
         ><button id="connect" class="primary">连接鼠标 <span>↗</span></button>
       </div>

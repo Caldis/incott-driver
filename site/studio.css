@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Incott UI";
-  src: url("fonts/incott-ui-v1.woff2?sha256=1f13701e8564") format("woff2");
+  src: url("fonts/incott-ui-v1.woff2?sha256=7cb683c7ea8c") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -1649,12 +1649,15 @@ button.text-button {
   }
 }
 
-.feedback-link {
+.header-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   min-height: 44px;
   color: var(--ink);
+}
+.github-link svg {
+  fill: currentColor;
 }
 .feedback-link svg {
   fill: none;
@@ -1663,18 +1666,18 @@ button.text-button {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.feedback-link:hover {
+.header-link:hover {
   color: #54643c;
 }
 @media (max-width: 700px) {
-  .feedback-link {
+  .header-link {
     justify-content: center;
     width: 44px;
     height: 44px;
     border: 1px solid var(--line);
     border-radius: 9px;
   }
-  .feedback-label {
+  .header-link-label {
     display: none;
   }
   .top-actions {
@@ -1687,8 +1690,17 @@ button.text-button {
     min-width: 112px;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   .top-actions #original-link {
     display: none;
+  }
+}
+@media (max-width: 380px) {
+  .topbar {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+  .wordmark {
+    font-size: 26px;
   }
 }

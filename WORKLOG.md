@@ -95,3 +95,12 @@
 ## 停用定时检查（2026-10-27）
 
 - 用户明确要求“每小时检查关掉”。已通过应用自动化工具将 incott-issues 从 ACTIVE 改为 PAUSED，并核对本地调度文件确为 PAUSED。保留任务配置和既有 Issue 授权策略，不再定时检查，也不得自行恢复。
+
+## cf、正式域名与仓库入口（2026-10-27）
+
+- 用户明确要求安装配置 cf，将 incott.caldis.me 指向现有 Pages，主页增加 GitHub 入口。仍在 D:\Code\incott-driver 修改，没有建立项目副本。
+- npm 官方元数据确认 cf 的仓库为 cloudflare/cf，安装 1.0.0-beta.23；用户完成官方 device OAuth 授权，whoami 确认 tokenValid=true，caldis.me zone 为 active。CLI 凭据由 cf 写入用户目录，不进仓库；.cloudflare 缓存已加入忽略。已关闭 cf 匿名使用统计。
+- 安装监控父进程在 150 秒时报告超时，但 npm 子进程随后完成退出 0。先核对进程、npm 日志与 cf --version，再决定是否重试；没有并发重装。后续 Windows 包安装的 watchdog 必须覆盖整个进程树，不能只杀 cmd 父进程。
+- 先核对 incott.caldis.me 无现存 DNS 记录，再设置 GitHub Pages cname，随后通过 cf 创建 CNAME→caldis.github.io、TTL 自动、proxied=false。只操作这个子域名。Actions 发布模式中 GitHub 不使用 CNAME 文件，因此通过 Pages API 配置，不写多余 site/CNAME。
+- 主页新增仓库链接，与反馈入口共享 header-link 样式和全局字体；窄屏使用各自图标、44 px 点击区域；补齐“仓库”两字的字体子集并更新内容哈希。30 项自动测试、31 项模拟 HID 浏览器检查通过，截图确认桌面与手机布局正常，没有真实鼠标写入。
+- 本地验证服务在 herdr 的 Incott 终端工作区运行，使用现有项目目录，内存 128 MB 与时长 1 小时上限。正式域名的 DNS/证书核对和发布结果继续追加。

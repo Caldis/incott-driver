@@ -173,6 +173,16 @@ async (page) => {
     name: "问题反馈（GitHub Issues）",
     exact: true,
   });
+  const repository = page.getByRole("link", {
+    name: "GitHub 仓库",
+    exact: true,
+  });
+  check(
+    "GitHub entry opens the project repository",
+    (await repository.getAttribute("href")) ===
+      "https://github.com/Caldis/incott-driver" &&
+      (await repository.getAttribute("target")) === "_blank",
+  );
   check(
     "feedback links to GitHub issue chooser",
     (await feedback.getAttribute("href")) ===
@@ -196,6 +206,7 @@ async (page) => {
   const fonts = {};
   for (const selector of [
     ".feedback-label",
+    ".github-label",
     ".app-name",
     ".wordmark",
     "#original-link",
@@ -380,6 +391,13 @@ async (page) => {
     "feedback entry stays visible on narrow screens",
     (await feedback.isVisible()) &&
       (await feedback
+        .boundingBox()
+        .then((box) => box.x >= 0 && box.x + box.width <= 320)),
+  );
+  check(
+    "GitHub entry stays visible on narrow screens",
+    (await repository.isVisible()) &&
+      (await repository
         .boundingBox()
         .then((box) => box.x >= 0 && box.x + box.width <= 320)),
   );
